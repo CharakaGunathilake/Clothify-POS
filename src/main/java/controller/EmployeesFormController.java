@@ -151,7 +151,7 @@ public class EmployeesFormController implements Initializable {
                 id = Integer.parseInt(m.group());
                 System.out.println(id);
             }
-            if(id>10) {
+            if(id> 10) {
                 return "E00" + (id + 1);
             } else if (id>100) {
                 return "E0" + (id + 1);
