@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="515.0" prefWidth="753.0" style="-fx-background-color: #bdc3c7;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="310.0" layoutY="205.0" stroke="BLACK" strokeType="INSIDE" width="753.0">
+         <fill>
+            <LinearGradient endX="0.8672985781990521" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9450980424880981" green="0.7686274647712708" blue="0.05882352963089943" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006711409395973154">
+                     <color>
+                        <Color red="0.9450980424880981" green="0.7686274647712708" blue="0.05882352963089943" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.2631579041481018" green="0.2295321673154831" blue="0.09502924233675003" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="205.0" stroke="BLACK" strokeType="INSIDE" width="753.0">
+         <fill>
+            <LinearGradient endX="0.8672985781990521" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9450980424880981" green="0.7686274647712708" blue="0.05882352963089943" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006711409395973154">
+                     <color>
+                        <Color red="0.9450980424880981" green="0.7686274647712708" blue="0.05882352963089943" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.2631579041481018" green="0.2295321673154831" blue="0.09502924233675003" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Label layoutX="250.0" layoutY="73.0" text="CLOTHIFY" textFill="#ddc455">
+         <font>
+            <Font name="Baskerville Old Face" size="49.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="520.0" layoutY="401.0" onAction="#btnLogInOnAction" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #f1c40f;" text="Log In" textAlignment="CENTER">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Baskerville Old Face" size="19.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="275.0" layoutY="466.0" text=" © 2024 allrights reserved" textFill="#141000">
+         <font>
+            <Font name="Baskerville Old Face" size="20.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="txtEmail" focusColor="BLACK" labelFloat="true" layoutX="291.0" layoutY="266.0" prefHeight="25.0" prefWidth="172.0" promptText="Email" unFocusColor="#bfa019">
+         <font>
+            <Font name="Baskerville Old Face" size="19.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton layoutX="367.0" layoutY="401.0" onAction="#btnRegisterOnAction" prefHeight="35.0" prefWidth="112.0" style="-fx-background-color: #f1c40f;" text="Register" textAlignment="CENTER">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Baskerville Old Face" size="19.0" />
+         </font>
+      </JFXButton>
+      <JFXTextField fx:id="txtPassword" focusColor="BLACK" labelFloat="true" layoutX="291.0" layoutY="330.0" prefHeight="25.0" prefWidth="172.0" promptText="Password" unFocusColor="#bfa019">
+         <font>
+            <Font name="Baskerville Old Face" size="19.0" />
+         </font>
+      </JFXTextField>
+      <Label layoutX="315.0" layoutY="223.0" text="Create Account" textFill="#ddc455">
+         <font>
+            <Font name="Baskerville Old Face" size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

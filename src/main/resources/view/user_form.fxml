@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="333.0" prefWidth="468.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="239.0" layoutY="98.0" stroke="BLACK" strokeType="INSIDE" width="480.0">
+         <fill>
+            <LinearGradient endX="0.8672985781990521" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9450980424880981" green="0.7686274647712708" blue="0.05882352963089943" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006711409395973154">
+                     <color>
+                        <Color red="0.9450980424880981" green="0.7686274647712708" blue="0.05882352963089943" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.2631579041481018" green="0.2295321673154831" blue="0.09502924233675003" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="103.0" layoutY="-5.0" stroke="BLACK" strokeType="INSIDE" width="480.0">
+         <fill>
+            <LinearGradient endX="0.8672985781990521" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9450980424880981" green="0.7686274647712708" blue="0.05882352963089943" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006711409395973154">
+                     <color>
+                        <Color red="0.9450980424880981" green="0.7686274647712708" blue="0.05882352963089943" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.2631579041481018" green="0.2295321673154831" blue="0.09502924233675003" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <JFXButton layoutX="109.0" layoutY="142.0" onAction="#btnOrderOnAction" prefHeight="60.0" prefWidth="115.0" style="-fx-background-color: #f1c40f;" text="Order">
+         <font>
+            <Font name="Baskerville Old Face" size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="109.0" layoutY="232.0" onAction="#btnSuppliersOnAction" prefHeight="60.0" prefWidth="115.0" style="-fx-background-color: #f1c40f;" text="Suppliers">
+         <font>
+            <Font name="Baskerville Old Face" size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="258.0" layoutY="142.0" onAction="#btnProductsOnAction" prefHeight="60.0" prefWidth="115.0" style="-fx-background-color: #f1c40f;" text="Products">
+         <font>
+            <Font name="Baskerville Old Face" size="20.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="258.0" layoutY="232.0" onAction="#btnReportsOnAction" prefHeight="60.0" prefWidth="115.0" style="-fx-background-color: #f1c40f;" text="Reports">
+         <font>
+            <Font name="Baskerville Old Face" size="20.0" />
+         </font>
+      </JFXButton>
+      <Label layoutX="82.0" layoutY="26.0" prefHeight="41.0" prefWidth="316.0" text="USER DASHBOARD" textFill="#f1c40f">
+         <font>
+            <Font name="Baskerville Old Face" size="34.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="425.0" layoutY="110.0" onAction="#btnProfileOnAction" prefHeight="41.0" prefWidth="39.0" style="-fx-background-color: #f1c40f;" text="Profile">
+         <font>
+            <Font name="Baskerville Old Face" size="20.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>
