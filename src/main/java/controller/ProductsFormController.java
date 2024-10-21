@@ -14,7 +14,10 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ProductsFormController implements Initializable {
 
@@ -67,7 +70,7 @@ public class ProductsFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        generateNewId();
+        lblId.setText(service.generateId());
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
@@ -101,8 +104,8 @@ public class ProductsFormController implements Initializable {
                 txtSupplier.getText()
         );
         if (service.addProduct(product)) {
-            generateNewId();
             new Alert(Alert.AlertType.INFORMATION, "Product added Successfully!").show();
+            lblId.setText(service.generateId());
         } else {
             new Alert(Alert.AlertType.ERROR, "Failed to Add Product!").show();
         }
@@ -113,6 +116,7 @@ public class ProductsFormController implements Initializable {
     void btnDeleteOnAction() {
         if (service.deleteProduct(lblId.getText())) {
             new Alert(Alert.AlertType.INFORMATION, "Product Deleted Successfully").show();
+            lblId.setText(service.generateId());
         } else {
             new Alert(Alert.AlertType.ERROR, "Failed to Delete Product!").show();
         }
@@ -148,12 +152,7 @@ public class ProductsFormController implements Initializable {
         txtSupplier.setText(newValue.getSupplier());
     }
 
-
-    private void generateNewId() {
-        lblId.setText("S002");
-    }
-
-    public void loadTable() {
+    private void loadTable() {
         try{
             ObservableList<Product> productsList = service.getAll();
             tblProduct.setItems(productsList);

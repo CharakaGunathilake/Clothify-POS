@@ -11,7 +11,8 @@ import util.DaoType;
 
 public class LoginServiceImpl implements LoginService {
 
-    LoginDao loginDao = DaoFactory.getInstance().getServiceType(DaoType.LOGIN);
+    private LoginEntity login = null;
+    private LoginDao loginDao = DaoFactory.getInstance().getServiceType(DaoType.LOGIN);
 
     @Override
     public boolean createLogin(Login login) {
@@ -21,17 +22,25 @@ public class LoginServiceImpl implements LoginService {
 
     @Override
     public boolean verifyLogin(Login login) {
-        LoginEntity entity = new ModelMapper().map(login, LoginEntity.class);
-        return loginDao.verifyLogin(entity);
+        LoginEntity entity = new ModelMapper().map(login,LoginEntity.class);
+        LoginEntity search = loginDao.search(login.getEmail());
+        return (String.valueOf(entity)).equals(String.valueOf(search));
     }
 
     @Override
     public boolean validEmail(String email) {
-        return loginDao.validEmail(email);
+        login = loginDao.search(email);
+        if (null != login) {
+            return login.getEmail().equals(email);
+        }else {
+            return false;
+        }
     }
 
     @Override
     public boolean createPassword(String password) {
-        return false;
+        System.out.println(this.login);
+        loginDao.search(login.getEmail());
+        return loginDao.update(new LoginEntity(login.getEmail(),password));
     }
 }

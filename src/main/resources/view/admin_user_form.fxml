@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="328.0" prefWidth="477.0" style="-fx-background-color: #bdc3c7;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminUserFormController">
+<AnchorPane prefHeight="328.0" prefWidth="879.0" style="-fx-background-color: #bdc3c7;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminUserFormController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="233.0" layoutY="95.0" stroke="BLACK" strokeType="INSIDE" width="477.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="583.0" stroke="BLACK" strokeType="INSIDE" width="879.0">
          <fill>
             <LinearGradient endX="0.8672985781990521" endY="1.0">
                <stops>
                   <Stop>
-                     <color>
-                        <Color red="0.9450980424880981" green="0.7686274647712708" blue="0.05882352963089943" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006711409395973154">
                      <color>
                         <Color red="0.9450980424880981" green="0.7686274647712708" blue="0.05882352963089943" />
                      </color>
@@ -34,52 +33,65 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="95.0" stroke="BLACK" strokeType="INSIDE" width="477.0">
-         <fill>
-            <LinearGradient endX="0.8672985781990521" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.9450980424880981" green="0.7686274647712708" blue="0.05882352963089943" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006711409395973154">
-                     <color>
-                        <Color red="0.9450980424880981" green="0.7686274647712708" blue="0.05882352963089943" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.2631579041481018" green="0.2295321673154831" blue="0.09502924233675003" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Rectangle>
-      <JFXButton layoutX="107.0" layoutY="139.0" onAction="#btnEmployeesOnAction" prefHeight="60.0" prefWidth="115.0" style="-fx-background-color: #f1c40f;" text="Employees">
+      <BorderPane fx:id="borderPane" layoutY="1.0" prefHeight="580.0" prefWidth="880.0" AnchorPane.bottomAnchor="2.2000000000000455">
+         <left>
+            <VBox alignment="TOP_CENTER" prefHeight="530.0" prefWidth="215.0" style="-fx-background-color: f1c40f;" BorderPane.alignment="CENTER">
+               <children>
+                  <Pane prefHeight="87.0" prefWidth="214.0">
+                     <children>
+                        <Label layoutX="19.0" layoutY="14.0" prefHeight="42.0" prefWidth="176.0" text="CLOTHIFY" textFill="#b18f12">
+                           <font>
+                              <Font name="Baskerville Old Face" size="34.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="74.0" layoutY="49.0" prefHeight="42.0" prefWidth="67.0" text="Admin" textFill="#b18f12">
+                           <font>
+                              <Font name="Baskerville Old Face" size="23.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <JFXButton onAction="#btnEmployeesOnAction" prefHeight="60.0" prefWidth="214.0" style="-fx-background-color: #f1c40f;" text="Employees">
+                     <font>
+                        <Font name="Baskerville Old Face" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton onAction="#btnSuppliersOnAction" prefHeight="60.0" prefWidth="219.0" style="-fx-background-color: #f1c40f;" text="Suppliers">
+                     <font>
+                        <Font name="Baskerville Old Face" size="20.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton onAction="#btnProductsOnAction" prefHeight="60.0" prefWidth="239.0" style="-fx-background-color: #f1c40f;" text="Products">
+                     <font>
+                        <Font name="Baskerville Old Face" size="20.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton onAction="#btnReportsOnAction" prefHeight="60.0" prefWidth="218.0" style="-fx-background-color: #f1c40f;" text="Reports">
+                     <font>
+                        <Font name="Baskerville Old Face" size="20.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="10.0" layoutY="308.0" onAction="#btnLogOutOnAction" prefHeight="60.0" prefWidth="218.0" style="-fx-background-color: #f1c40f;" text="Log Out">
+                     <font>
+                        <Font name="Baskerville Old Face" size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="170.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+            </VBox>
+         </left>
+      </BorderPane>
+      <Label fx:id="lblTitle" layoutX="427.0" layoutY="26.0" prefHeight="42.0" prefWidth="302.0" text="ADMIN DASHBOARD" textFill="#f1c40f">
          <font>
-            <Font name="Baskerville Old Face" size="20.0" />
-         </font>
-      </JFXButton>
-      <JFXButton layoutX="107.0" layoutY="229.0" onAction="#btnSuppliersOnAction" prefHeight="60.0" prefWidth="115.0" style="-fx-background-color: #f1c40f;" text="Suppliers">
-         <font>
-            <Font name="Baskerville Old Face" size="20.0" />
-         </font>
-      </JFXButton>
-      <JFXButton layoutX="256.0" layoutY="139.0" onAction="#btnProductsOnAction" prefHeight="60.0" prefWidth="115.0" style="-fx-background-color: #f1c40f;" text="Products">
-         <font>
-            <Font name="Baskerville Old Face" size="20.0" />
-         </font>
-      </JFXButton>
-      <JFXButton layoutX="256.0" layoutY="229.0" onAction="#btnReportsOnAction" prefHeight="60.0" prefWidth="115.0" style="-fx-background-color: #f1c40f;" text="Reports">
-         <font>
-            <Font name="Baskerville Old Face" size="20.0" />
-         </font>
-      </JFXButton>
-      <Label layoutX="62.0" layoutY="27.0" prefHeight="41.0" prefWidth="353.0" text="ADMIN DASHBOARD" textFill="#f1c40f">
-         <font>
-            <Font name="Baskerville Old Face" size="34.0" />
+            <Font name="Baskerville Old Face" size="29.0" />
          </font>
       </Label>
    </children>

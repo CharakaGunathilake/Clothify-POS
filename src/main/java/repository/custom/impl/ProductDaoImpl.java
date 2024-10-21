@@ -39,7 +39,7 @@ public class ProductDaoImpl implements ProductDao {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
         try (session) {
-            EmployeeEntity entity = session.get(EmployeeEntity.class, id);
+            ProductEntity entity = search(id);
             if (entity != null) {
                 session.remove(entity);
             }
@@ -66,7 +66,7 @@ public class ProductDaoImpl implements ProductDao {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            System.out.println(session.merge(product));
+            session.merge(product);
             session.getTransaction().commit();
             return true;
         } catch (Exception sqlException) {
@@ -83,6 +83,7 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public ProductEntity search(String id) {
-        return null;
+        Session session = HibernateUtil.getSession();
+        return session.get(ProductEntity.class, id);
     }
 }

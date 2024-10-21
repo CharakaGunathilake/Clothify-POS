@@ -14,9 +14,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="515.0" prefWidth="696.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeesFormController">
+<AnchorPane prefHeight="582.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeesFormController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="124.0" stroke="BLACK" strokeType="INSIDE" width="704.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="581.0" layoutX="1.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" width="700.0">
          <fill>
             <LinearGradient endX="0.8672985781990521" endY="1.0">
                <stops>
@@ -39,55 +39,27 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Label layoutX="125.0" layoutY="42.0" prefHeight="41.0" prefWidth="454.0" text="EMPLOYEE MANAGEMENT" textFill="#f1c40f">
-         <font>
-            <Font name="Baskerville Old Face" size="34.0" />
-         </font>
-      </Label>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="391.0" layoutY="124.0" stroke="BLACK" strokeType="INSIDE" width="704.0">
-         <fill>
-            <LinearGradient endX="0.8672985781990521" endY="1.0">
-               <stops>
-                  <Stop>
-                     <color>
-                        <Color red="0.9450980424880981" green="0.7686274647712708" blue="0.05882352963089943" />
-                     </color>
-                  </Stop>
-                  <Stop offset="0.006711409395973154">
-                     <color>
-                        <Color red="0.9450980424880981" green="0.7686274647712708" blue="0.05882352963089943" />
-                     </color>
-                  </Stop>
-                  <Stop offset="1.0">
-                     <color>
-                        <Color red="0.2631579041481018" green="0.2295321673154831" blue="0.09502924233675003" />
-                     </color>
-                  </Stop>
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Rectangle>
-      <JFXTextField fx:id="txtName" focusColor="BLACK" labelFloat="true" layoutX="227.0" layoutY="161.0" prefHeight="35.0" prefWidth="178.0" promptText="Name" unFocusColor="#bfa019">
+      <JFXTextField fx:id="txtName" focusColor="BLACK" labelFloat="true" layoutX="277.0" layoutY="195.0" prefHeight="36.0" prefWidth="131.0" promptText="Name" unFocusColor="#bfa019">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtEmail" focusColor="BLACK" labelFloat="true" layoutX="440.0" layoutY="161.0" prefHeight="25.0" prefWidth="210.0" promptText="Email" unFocusColor="#bfa019">
+      <JFXTextField fx:id="txtEmail" focusColor="BLACK" labelFloat="true" layoutX="443.0" layoutY="195.0" prefHeight="25.0" prefWidth="210.0" promptText="Email" unFocusColor="#bfa019">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtCompany" focusColor="BLACK" labelFloat="true" layoutX="50.0" layoutY="223.0" prefHeight="25.0" prefWidth="210.0" promptText="Company" unFocusColor="#bfa019">
+      <JFXTextField fx:id="txtCompany" focusColor="BLACK" labelFloat="true" layoutX="53.0" layoutY="257.0" prefHeight="25.0" prefWidth="210.0" promptText="Company" unFocusColor="#bfa019">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtContact" focusColor="BLACK" labelFloat="true" layoutX="312.0" layoutY="223.0" prefHeight="25.0" prefWidth="210.0" promptText="Contact" unFocusColor="#bfa019">
+      <JFXTextField fx:id="txtContact" focusColor="BLACK" labelFloat="true" layoutX="315.0" layoutY="257.0" prefHeight="25.0" prefWidth="210.0" promptText="Contact" unFocusColor="#bfa019">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXTextField>
-      <TableView fx:id="tblEmployees" layoutX="27.0" layoutY="287.0" prefHeight="200.0" prefWidth="495.0" style="-fx-background-color: #f1c40f;">
+      <TableView fx:id="tblEmployees" layoutX="29.0" layoutY="329.0" prefHeight="214.0" prefWidth="495.0" style="-fx-background-color: #f1c40f;">
         <columns>
           <TableColumn fx:id="colId" prefWidth="53.0" text="ID" />
           <TableColumn fx:id="colName" prefWidth="98.0" text="NAME" />
@@ -96,7 +68,7 @@
             <TableColumn fx:id="colContact" prefWidth="108.0" text="CONTACT" />
         </columns>
       </TableView>
-      <JFXButton fx:id="btnAdd" layoutX="559.0" layoutY="223.0" onAction="#btnAddOnAction" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #f1c40f;" text="Add" textAlignment="CENTER">
+      <JFXButton fx:id="btnAdd" layoutX="562.0" layoutY="257.0" onAction="#btnAddOnAction" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #f1c40f;" text="Add" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -104,7 +76,7 @@
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="559.0" layoutY="392.0" onAction="#btnUpdateOnAction" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #f1c40f;" text="Update" textAlignment="CENTER">
+      <JFXButton layoutX="561.0" layoutY="448.0" onAction="#btnUpdateOnAction" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #f1c40f;" text="Update" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -112,7 +84,7 @@
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="559.0" layoutY="452.0" onAction="#btnDeleteOnAction" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #f1c40f;" text="Delete" textAlignment="CENTER">
+      <JFXButton layoutX="561.0" layoutY="508.0" onAction="#btnDeleteOnAction" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #f1c40f;" text="Delete" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -120,16 +92,24 @@
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXButton>
-      <Line endX="606.0" layoutX="97.0" layoutY="275.0" startX="-100.0" />
-      <Label fx:id="lblId" layoutX="158.0" layoutY="167.0" text="ID">
+      <Line endX="600.0" layoutX="100.0" layoutY="309.0" startX="-100.0" />
+      <Label fx:id="lblId" layoutX="161.0" layoutY="201.0" text="ID">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </Label>
-      <Label layoutX="50.0" layoutY="167.0" text="Employee Id: ">
+      <Label layoutX="53.0" layoutY="201.0" text="Employee Id: ">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </Label>
+      <JFXButton fx:id="btnRefresh" layoutX="227.0" layoutY="195.0" onAction="#btnAddOnAction" prefHeight="36.0" prefWidth="22.0" style="-fx-background-color: #f1c40f;" text="r" textAlignment="CENTER">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Baskerville Old Face" size="19.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

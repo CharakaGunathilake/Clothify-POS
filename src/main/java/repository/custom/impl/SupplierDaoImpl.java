@@ -14,6 +14,21 @@ import java.util.List;
 public class SupplierDaoImpl implements SupplierDao {
     @Override
     public boolean save(SupplierEntity supplier) {
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            session.persist(supplier);
+            session.getTransaction().commit();
+            return true;
+        } catch (Exception sqlException) {
+            if (null != transaction) {
+                new Alert(Alert.AlertType.ERROR, "Failed to add Record->" + sqlException.getMessage()).show();
+                transaction.rollback();
+                sqlException.printStackTrace();
+            }
+        }finally{
+            session.close();
+        }
         return false;
     }
 
@@ -22,7 +37,7 @@ public class SupplierDaoImpl implements SupplierDao {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
         try (session) {
-            EmployeeEntity entity = session.get(EmployeeEntity.class, id);
+            SupplierEntity entity = session.get(SupplierEntity.class, id);
             if (entity != null) {
                 session.remove(entity);
             }
@@ -50,7 +65,7 @@ public class SupplierDaoImpl implements SupplierDao {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
         try {
-            System.out.println(session.merge(supplier));
+            session.merge(supplier);
             session.getTransaction().commit();
             return true;
         } catch (Exception sqlException) {

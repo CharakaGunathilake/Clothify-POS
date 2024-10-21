@@ -1,15 +1,12 @@
 package repository.custom.impl;
 
 import entity.EmployeeEntity;
-import javafx.collections.FXCollections;
 import javafx.scene.control.Alert;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import repository.custom.EmployeeDao;
-import javafx.collections.ObservableList;
 import util.HibernateUtil;
 
-import java.sql.SQLException;
 import java.util.List;
 
 public class EmployeeDaoImpl implements EmployeeDao {
@@ -39,7 +36,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
             Session session = HibernateUtil.getSession();
             Transaction transaction = session.beginTransaction();
             try (session) {
-                EmployeeEntity entity = session.get(EmployeeEntity.class, id);
+                EmployeeEntity entity = search(id);
                 if (entity != null) {
                     session.remove(entity);
                 }
@@ -66,7 +63,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
             Session session = HibernateUtil.getSession();
             Transaction transaction = session.beginTransaction();
             try {
-                System.out.println(session.merge(employee));
+                session.merge(employee);
                 session.getTransaction().commit();
                 return true;
             } catch (Exception sqlException) {
@@ -83,6 +80,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 
         @Override
         public EmployeeEntity search (String id){
-            return null;
+            Session session = HibernateUtil.getSession();
+            return session.get(EmployeeEntity.class, id);
         }
     }

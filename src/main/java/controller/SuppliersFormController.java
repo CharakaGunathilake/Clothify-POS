@@ -15,7 +15,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SuppliersFormController implements Initializable {
 
@@ -56,7 +59,7 @@ public class SuppliersFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        generateNewId();
+        lblId.setText(service.generateId());
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colCompany.setCellValueFactory(new PropertyValueFactory<>("company"));
@@ -71,10 +74,6 @@ public class SuppliersFormController implements Initializable {
         loadTable();
     }
 
-    private void generateNewId() {
-        lblId.setText("S001");
-    }
-
     @FXML
     void btnAddOnAction() {
         Supplier supplier = new Supplier(
@@ -86,6 +85,7 @@ public class SuppliersFormController implements Initializable {
         );
         if (service.addSupplier(supplier)) {
             new Alert(Alert.AlertType.INFORMATION, "Supplier added Successfully!").show();
+            lblId.setText(service.generateId());
         } else {
             new Alert(Alert.AlertType.ERROR, "Failed to Add Supplier!").show();
         }
@@ -96,6 +96,7 @@ public class SuppliersFormController implements Initializable {
     void btnDeleteOnAction() {
         if (service.deleteSupplier(lblId.getText())) {
             new Alert(Alert.AlertType.INFORMATION, "Supplier Deleted Successfully").show();
+            lblId.setText(service.generateId());
         } else {
             new Alert(Alert.AlertType.ERROR, "Failed to Delete Supplier!").show();
         }
@@ -127,7 +128,7 @@ public class SuppliersFormController implements Initializable {
         txtItem.setText(newValue.getItem());
     }
 
-    public void loadTable() {
+    private void loadTable() {
         ObservableList<Supplier> suppliersList = service.getAll();
         tblSupplier.setItems(suppliersList);
     }

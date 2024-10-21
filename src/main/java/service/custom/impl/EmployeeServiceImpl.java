@@ -18,8 +18,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     EmployeeDao employeeDao = DaoFactory.getInstance().getServiceType(DaoType.EMPLOYEE);
 
-
-
     @Override
     public boolean addEmployee(Employee employee) {
         EmployeeEntity entity = new ModelMapper().map(employee, EmployeeEntity.class);
@@ -54,5 +52,32 @@ public class EmployeeServiceImpl implements EmployeeService {
             employeesIdList.add(new ModelMapper().map(employeeEntity.getId(), String.class));
         });
         return employeesIdList;
+    }
+
+    @Override
+    public String generateId() {
+        List<String> employeeIdList = getEmployeeIds();
+        if (!employeeIdList.isEmpty()) {
+            String last = employeeIdList.get((employeeIdList.size())-1);
+            Pattern p = Pattern.compile("\\d+");
+            Matcher m = p.matcher(last);
+            Integer id = null;
+            while (m.find()) {
+                id = Integer.parseInt(m.group());
+            }
+            try {
+                if (id < 10) {
+                    return "E00" + (id + 1);
+                } else if (id < 100) {
+                    return "E0" + (id + 1);
+                } else {
+                    return "E" + (id + 1);
+                }
+            }catch (NullPointerException e){
+                return "E001";
+            }
+        }else {
+            return "E001";
+        }
     }
 }

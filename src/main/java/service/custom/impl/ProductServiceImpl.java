@@ -11,6 +11,10 @@ import repository.custom.ProductDao;
 import service.custom.ProductService;
 import util.DaoType;
 
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class ProductServiceImpl implements ProductService {
 
     ProductDao productDao = DaoFactory.getInstance().getServiceType(DaoType.PRODUCT);
@@ -43,6 +47,33 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ObservableList<String> getProductIds() {
-        return null;
+        ObservableList<String> productsList = FXCollections.observableArrayList();
+        productDao.getAll().forEach(productEntity -> {
+            productsList.add(new ModelMapper().map(productEntity.getId(), String.class));
+        });
+        return productsList;
+    }
+
+    @Override
+    public String generateId() {
+        List<String> productIdList = getProductIds();
+        if (!productIdList.isEmpty()) {
+            String last = productIdList.get((productIdList.size())-1);
+            Pattern p = Pattern.compile("\\d+");
+            Matcher m = p.matcher(last);
+            Integer id = null;
+            while (m.find()) {
+                id = Integer.parseInt(m.group());
+            }
+            if (id < 10) {
+                return "P00" + (id + 1);
+            } else if (id < 100) {
+                return "P0" + (id + 1);
+            } else {
+                return "P" + (id + 1);
+            }
+        }else {
+            return "P001";
+        }
     }
 }

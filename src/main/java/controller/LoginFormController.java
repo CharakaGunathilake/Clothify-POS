@@ -3,6 +3,8 @@ package controller;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import dto.Login;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import service.ServiceFactory;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,6 +23,12 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LoginFormController implements Initializable {
+
+    @FXML
+    private AnchorPane scenePane;
+
+    @FXML
+    private BorderPane borderPane;
 
     @FXML
     private JFXComboBox<String> cmbPosition;
@@ -43,19 +51,21 @@ public class LoginFormController implements Initializable {
             ));
             if (isValidLogin){
                 if (cmbPosition.getValue() != null) {
+                    Stage stage = (Stage) scenePane.getScene().getWindow();
                     if ((cmbPosition.getValue()).equals("Admin")) {
-                        Stage stage = new Stage();
                         try {
                             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/admin_user_form.fxml"))));
                             stage.show();
+                            stage.setResizable(false);
+
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
                     } else if ((cmbPosition.getValue()).equals("Employee")) {
-                        Stage stage = new Stage();
                         try {
                             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/user_form.fxml"))));
                             stage.show();
+                            stage.setResizable(false);
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
@@ -65,7 +75,9 @@ public class LoginFormController implements Initializable {
                 }
 
             }else {
-                new Alert(Alert.AlertType.ERROR,"Failed to Login!").show();
+               Alert alert = new Alert(Alert.AlertType.ERROR,"Incorrect Email or Password");
+               alert.setHeaderText("Login Failed!");
+               alert.show();
             }
         }else {
             new Alert(Alert.AlertType.ERROR,"Please fill the empty input fields!!").show();
@@ -79,10 +91,10 @@ public class LoginFormController implements Initializable {
 
     @FXML
     void lnkForgotPasswordOnAction(ActionEvent event) {
-        Stage stage = new Stage();
         try {
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/recovery_form.fxml"))));
-            stage.show();
+            scenePane = FXMLLoader.load(getClass().getResource("../view/recovery_form.fxml"));
+            borderPane.setCenter(scenePane);
+            borderPane.toFront();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

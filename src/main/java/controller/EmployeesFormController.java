@@ -62,7 +62,7 @@ public class EmployeesFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        lblId.setText(generateNewId());
+        lblId.setText(service.generateId());
         colId.setCellValueFactory(new PropertyValueFactory<>("id"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colCompany.setCellValueFactory(new PropertyValueFactory<>("company"));
@@ -89,7 +89,7 @@ public class EmployeesFormController implements Initializable {
         if (service.addEmployee(employee)) {
             new Alert(Alert.AlertType.INFORMATION, "Employee added Successfully!").show();
             setTextToEmpty();
-            lblId.setText(generateNewId());
+            lblId.setText(service.generateId());
         } else {
             new Alert(Alert.AlertType.ERROR, "Failed to Add Employee!").show();
         }
@@ -101,6 +101,7 @@ public class EmployeesFormController implements Initializable {
         if (service.deleteEmployee(lblId.getText())) {
             new Alert(Alert.AlertType.INFORMATION, "Employee Deleted Successfully").show();
             setTextToEmpty();
+            lblId.setText(service.generateId());
         } else {
             new Alert(Alert.AlertType.ERROR, "Failed to Delete Employee!").show();
         }
@@ -138,32 +139,9 @@ public class EmployeesFormController implements Initializable {
         txtCompany.setText("");
         txtEmail.setText("");
         txtContact.setText("");
-        btnAdd.setDisable(true);
-    }
-    private String generateNewId() {
-        List<String> employeeIdList = service.getEmployeeIds();
-        if (!employeeIdList.isEmpty()) {
-            String last = employeeIdList.get(employeeIdList.size()-1);
-            Pattern p = Pattern.compile("0\\d+");
-            Matcher m = p.matcher(last);
-            Integer id = null;
-            while (m.find()) {
-                id = Integer.parseInt(m.group());
-                System.out.println(id);
-            }
-            if(id> 10) {
-                return "E00" + (id + 1);
-            } else if (id>100) {
-                return "E0" + (id + 1);
-            }else{
-                return "E" + (id + 1);
-            }
-        }else {
-            return "E001";
-        }
     }
 
-    public void loadTable(){
+    private void loadTable(){
         try{
             ObservableList<Employee> employeesList = service.getAll();
             tblEmployees.setItems(employeesList);

@@ -41,21 +41,27 @@ public class LoginDaoImpl implements LoginDao {
 
     @Override
     public boolean update(LoginEntity login) {
+        Session session = HibernateUtil.getSession();
+        Transaction transaction = session.beginTransaction();
+        try {
+            session.merge(login);
+            session.getTransaction().commit();
+            return true;
+        } catch (Exception sqlException) {
+            if (null != session.getTransaction()) {
+                new Alert(Alert.AlertType.ERROR, "Failed to update Record->" + sqlException.getMessage()).show();
+                transaction.rollback();
+                sqlException.printStackTrace();
+            }
+        }finally {
+            session.close();
+        }
         return false;
     }
 
     @Override
     public LoginEntity search(String id) {
-        return null;
-    }
-
-    @Override
-    public boolean verifyLogin(LoginEntity login) {
-        return true;
-    }
-
-    @Override
-    public boolean validEmail(String email) {
-        return false;
+        Session session = HibernateUtil.getSession();
+        return session.get(LoginEntity.class,id);
     }
 }
