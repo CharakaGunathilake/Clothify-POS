@@ -40,7 +40,7 @@ public class SupplierServiceImpl implements SupplierService {
     public ObservableList<String> getSupplierIds(){
         ObservableList<String> supplierIdList = FXCollections.observableArrayList();
         supplierDao.getAll().forEach(supplierEntity -> {
-            supplierIdList.add(new ModelMapper().map(supplierEntity.getId(), String.class));
+            supplierIdList.add(supplierEntity.getId());
         });
         return supplierIdList;
     }

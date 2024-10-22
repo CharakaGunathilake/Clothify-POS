@@ -39,7 +39,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     public ObservableList<Employee> getAll() throws NullPointerException{
         ObservableList<Employee> employeesList = FXCollections.observableArrayList();
         employeeDao.getAll().forEach(employeeEntity -> {
-            System.out.println(employeeEntity);
             employeesList.add(new ModelMapper().map(employeeEntity, Employee.class));
         });
         return employeesList;
@@ -49,7 +48,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public ObservableList<String> getEmployeeIds() {
         ObservableList<String> employeesIdList = FXCollections.observableArrayList();
         employeeDao.getAll().forEach(employeeEntity -> {
-            employeesIdList.add(new ModelMapper().map(employeeEntity.getId(), String.class));
+            employeesIdList.add(employeeEntity.getId());
         });
         return employeesIdList;
     }

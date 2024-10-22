@@ -46,10 +46,15 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Product searchProduct(String id) {
+        return new ModelMapper().map(productDao.search(id),Product.class);
+    }
+
+    @Override
     public ObservableList<String> getProductIds() {
         ObservableList<String> productsList = FXCollections.observableArrayList();
         productDao.getAll().forEach(productEntity -> {
-            productsList.add(new ModelMapper().map(productEntity.getId(), String.class));
+            productsList.add(productEntity.getId());
         });
         return productsList;
     }

@@ -9,6 +9,7 @@ public interface ProductService extends SuperService {
     boolean updateProduct(Product product);
     boolean deleteProduct(String id);
     ObservableList<Product> getAll();
+    Product searchProduct(String id);
     ObservableList<String> getProductIds();
     String generateId ();
 }

@@ -39,7 +39,7 @@ public class LoginFormController implements Initializable {
     @FXML
     private JFXTextField txtPassword;
 
-    LoginService service = ServiceFactory.getInstance().getServiceType(ServiceType.LOGIN);
+    private LoginService service = ServiceFactory.getInstance().getServiceType(ServiceType.LOGIN);
 
     @FXML
     void btnLogInOnAction(ActionEvent event) {

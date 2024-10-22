@@ -40,7 +40,9 @@ public class ProductDaoImpl implements ProductDao {
         Transaction transaction = session.beginTransaction();
         try (session) {
             ProductEntity entity = search(id);
+            System.out.println(entity);
             if (entity != null) {
+                System.out.println("entity");
                 session.remove(entity);
             }
             transaction.commit();

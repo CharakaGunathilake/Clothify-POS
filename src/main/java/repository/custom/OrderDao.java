@@ -1,7 +1,8 @@
 package repository.custom;
 
 import entity.LoginEntity;
+import entity.OrderEntity;
 import repository.CrudRepository;
 
-public interface LoginDao extends CrudRepository<LoginEntity> {
+public interface OrderDao extends CrudRepository<OrderEntity> {
 }

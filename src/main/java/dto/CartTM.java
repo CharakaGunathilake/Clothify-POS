@@ -6,13 +6,14 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Data
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Employee {
-    private String id;
+@ToString
+public class CartTM {
+    private String itemCode;
     private String name;
-    private String company;
-    private String email;
-    private String contact;
+    private String category;
+    private Integer qty;
+    private Double unitPrice;
+    private Double total;
 }

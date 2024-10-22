@@ -64,7 +64,6 @@ public class AdminUserFormController {
     }
     @FXML
     void btnLogOutOnAction(ActionEvent actionEvent) {
-
         Stage stage = (Stage) borderPane.getScene().getWindow();
         stage.close();
         try {
