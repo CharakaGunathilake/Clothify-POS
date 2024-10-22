@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import service.custom.LoginService;
+import util.LoginInfo;
 import util.ServiceType;
 
 import java.io.IOException;
@@ -39,17 +40,18 @@ public class LoginFormController implements Initializable {
     @FXML
     private JFXTextField txtPassword;
 
-    private LoginService service = ServiceFactory.getInstance().getServiceType(ServiceType.LOGIN);
+    private final LoginService service = ServiceFactory.getInstance().getServiceType(ServiceType.LOGIN);
 
     @FXML
     void btnLogInOnAction(ActionEvent event) {
         if (!hasEmptyFields()) {
-            boolean isValidLogin = service.verifyLogin(
-                    new Login(
-                        txtEmail.getText(),
-                        txtPassword.getText()
-            ));
+            Login login = service.searchLogin(txtEmail.getText());
+            boolean isValidLogin = verifyLogin(login);
             if (isValidLogin){
+                LoginInfo info = LoginInfo.getInstance();
+                info.setEmail(login.getEmail());
+                info.setUserId(login.getUserId());
+                info.setEmail(txtEmail.getText());
                 if (cmbPosition.getValue() != null) {
                     Stage stage = (Stage) scenePane.getScene().getWindow();
                     if ((cmbPosition.getValue()).equals("Admin")) {
@@ -66,6 +68,7 @@ public class LoginFormController implements Initializable {
                             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/user_form.fxml"))));
                             stage.show();
                             stage.setResizable(false);
+                            service.setLoginId();
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
@@ -82,6 +85,10 @@ public class LoginFormController implements Initializable {
         }else {
             new Alert(Alert.AlertType.ERROR,"Please fill the empty input fields!!").show();
         }
+    }
+
+    private boolean verifyLogin(Login login) {
+        return login.getPassword().equals(txtPassword.getText()) && login.getEmail().equals(txtEmail.getText());
     }
 
     private boolean hasEmptyFields() {

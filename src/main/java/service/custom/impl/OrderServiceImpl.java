@@ -2,6 +2,8 @@ package service.custom.impl;
 
 import dto.Employee;
 import dto.Order;
+import dto.OrderDetail;
+import entity.CartTMEntity;
 import entity.EmployeeEntity;
 import entity.OrderEntity;
 import javafx.collections.FXCollections;
@@ -9,6 +11,8 @@ import javafx.collections.ObservableList;
 import org.modelmapper.ModelMapper;
 import repository.DaoFactory;
 import repository.custom.OrderDao;
+import repository.custom.OrderDetailDao;
+import repository.custom.ProductDao;
 import service.custom.OrderService;
 import util.DaoType;
 
@@ -18,12 +22,31 @@ import java.util.regex.Pattern;
 
 public class OrderServiceImpl implements OrderService {
 
+    ProductDao productDao = DaoFactory.getInstance().getServiceType(DaoType.PRODUCT);
     OrderDao orderDao = DaoFactory.getInstance().getServiceType(DaoType.ORDER);
+    OrderDetailDao orderDetailDao = DaoFactory.getInstance().getServiceType(DaoType.ORDERDETAIL);
 
     @Override
     public boolean addOrder(Order order) {
-        OrderEntity entity = new ModelMapper().map(order, OrderEntity.class);
-        return orderDao.save(entity);
+        boolean isDone = addOrderDetails(order.getOrderDetails());
+        if (isDone) {
+            if(productDao.updateStocks(order.getOrderDetails())) {
+                OrderEntity entity = new ModelMapper().map(order, OrderEntity.class);
+                return orderDao.save(entity);
+            }
+        }else {
+            return false;
+        }return false;
+    }
+
+    private boolean addOrderDetails(List<OrderDetail> cartTMEntities){
+        for(OrderDetail orderDetail : cartTMEntities){
+            CartTMEntity cartTMEntity = new ModelMapper().map(orderDetail, CartTMEntity.class);
+            boolean isDone = orderDetailDao.save(cartTMEntity);
+            if (!isDone){
+                return false;
+            }
+        }return true;
     }
 
     @Override

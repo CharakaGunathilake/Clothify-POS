@@ -1,11 +1,6 @@
 package entity;
 
-import dto.OrderDetail;
-import dto.Product;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,11 +14,19 @@ import java.util.List;
 @ToString
 @AllArgsConstructor
 @Entity
+@Table(name = "Orders")
 public class OrderEntity {
     @Id
     private String orderId;
     private LocalDate orderDate;
+    private String orderTime;
+    private String empId;
     private Double netTotal;
-    @ManyToMany
-    private List<OrderDetailEntity> orderDetail;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "OrderDetail",
+            joinColumns = { @JoinColumn(name = "orderId") },
+            inverseJoinColumns = { @JoinColumn(name = "itemcode") }
+    )
+    private List<CartTMEntity> cartDetails;
 }

@@ -1,7 +1,7 @@
 package repository.custom;
 
-import entity.OrderDetailEntity;
+import entity.CartTMEntity;
 import repository.CrudRepository;
 
-public interface OrderDetailDao extends CrudRepository<OrderDetailEntity>{
+public interface OrderDetailDao extends CrudRepository<CartTMEntity>{
 }

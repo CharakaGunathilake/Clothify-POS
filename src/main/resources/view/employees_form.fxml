@@ -103,13 +103,5 @@
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnRefresh" layoutX="227.0" layoutY="195.0" onAction="#btnAddOnAction" prefHeight="36.0" prefWidth="22.0" style="-fx-background-color: #f1c40f;" text="r" textAlignment="CENTER">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <font>
-            <Font name="Baskerville Old Face" size="19.0" />
-         </font>
-      </JFXButton>
    </children>
 </AnchorPane>

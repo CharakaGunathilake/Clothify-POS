@@ -17,7 +17,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
         Transaction transaction = session.beginTransaction();
         try {
             session.persist(employee);
-            session.getTransaction().commit();
+            transaction.commit();
             return true;
         } catch (Exception sqlException) {
             if (null != transaction) {

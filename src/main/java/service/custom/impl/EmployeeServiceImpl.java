@@ -48,7 +48,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public ObservableList<String> getEmployeeIds() {
         ObservableList<String> employeesIdList = FXCollections.observableArrayList();
         employeeDao.getAll().forEach(employeeEntity -> {
-            employeesIdList.add(employeeEntity.getId());
+            employeesIdList.add(employeeEntity.getEmpId());
         });
         return employeesIdList;
     }

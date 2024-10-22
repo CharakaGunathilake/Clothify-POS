@@ -17,6 +17,9 @@ import java.io.IOException;
 public class DashboardFormController {
 
     @FXML
+    private JFXTextField txtUserId;
+
+    @FXML
     private JFXTextField txtEmail;
 
     @FXML
@@ -38,6 +41,7 @@ public class DashboardFormController {
         LoginService service = ServiceFactory.getInstance().getServiceType(ServiceType.LOGIN);
         if (!hasEmptyFields()) {
             boolean isDone = service.createLogin(new Login(
+                    txtUserId.getText(),
                     txtEmail.getText(),
                     txtPassword.getText()
                     )
@@ -53,7 +57,7 @@ public class DashboardFormController {
     }
 
     private boolean hasEmptyFields() {
-        return txtEmail.getText().isEmpty() || txtPassword.getText().isEmpty();
+        return txtUserId.getText().isEmpty() || txtEmail.getText().isEmpty() || txtPassword.getText().isEmpty();
     }
 
 }

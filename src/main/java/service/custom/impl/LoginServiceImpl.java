@@ -20,12 +20,6 @@ public class LoginServiceImpl implements LoginService {
         return loginDao.save(entity);
     }
 
-    @Override
-    public boolean verifyLogin(Login login) {
-        LoginEntity entity = new ModelMapper().map(login,LoginEntity.class);
-        LoginEntity search = loginDao.search(login.getEmail());
-        return (String.valueOf(entity)).equals(String.valueOf(search));
-    }
 
     @Override
     public boolean validEmail(String email) {
@@ -38,9 +32,20 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
+    public Login searchLogin(String email) {
+        LoginEntity login1 = loginDao.search(email);
+        return new ModelMapper().map(login1,Login.class);
+    }
+
+    @Override
     public boolean createPassword(String password) {
         System.out.println(this.login);
         loginDao.search(login.getEmail());
-        return loginDao.update(new LoginEntity(login.getEmail(),password));
+        return loginDao.update(new LoginEntity(login.getUserId(),login.getEmail(),password));
+    }
+
+    @Override
+    public void setLoginId() {
+
     }
 }

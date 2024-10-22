@@ -20,7 +20,7 @@ public class DaoFactory {
             case SUPPLIER: return (T) new SupplierDaoImpl();
             case LOGIN: return (T) new LoginDaoImpl();
             case ORDER: return (T) new OrderDaoImpl();
-//            case ORDERDETAIL: return (T) new OderDetailDaoImpl();
+            case ORDERDETAIL: return (T) new OderDetailDaoImpl();
         }
         return null;
     }
