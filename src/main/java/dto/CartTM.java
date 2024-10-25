@@ -10,6 +10,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString
 public class CartTM {
+    private String orderId;
     private String itemCode;
     private String name;
     private String category;

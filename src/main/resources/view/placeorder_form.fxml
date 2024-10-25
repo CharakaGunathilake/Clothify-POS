@@ -40,7 +40,8 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <TableView fx:id="tblEmployees" layoutX="16.0" layoutY="330.0" prefHeight="201.0" prefWidth="495.0" style="-fx-background-color: #f1c40f;">
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#e6e7e841" height="418.0" layoutX="13.0" layoutY="122.0" stroke="BLACK" strokeType="INSIDE" width="676.0" />
+      <TableView fx:id="tblEmployees" layoutX="34.0" layoutY="297.0" prefHeight="201.0" prefWidth="495.0" style="-fx-background-color: #f1c40f;">
          <columns>
             <TableColumn fx:id="colId" prefWidth="53.0" text="ID" />
             <TableColumn fx:id="colName" prefWidth="154.0" text="NAME" />
@@ -49,7 +50,7 @@
             <TableColumn fx:id="colTotal" prefWidth="101.0" text="TOTAL" />
          </columns>
       </TableView>
-      <JFXButton layoutX="531.0" layoutY="266.0" onAction="#btnAddOnAction" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: #f1c40f;" text="Add" textAlignment="CENTER">
+      <JFXButton layoutX="540.0" layoutY="234.0" onAction="#btnAddOnAction" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: #f1c40f;" text="Add" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -57,7 +58,7 @@
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="531.0" layoutY="495.0" onAction="#btnPlaceOrderOnAction" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: #f1c40f;" text="Place Order" textAlignment="CENTER">
+      <JFXButton layoutX="540.0" layoutY="463.0" onAction="#btnPlaceOrderOnAction" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: #f1c40f;" text="Place Order" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -65,7 +66,7 @@
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="531.0" layoutY="451.0" onAction="#btnDeleteOnAction" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: #f1c40f;" text="Delete" textAlignment="CENTER">
+      <JFXButton layoutX="540.0" layoutY="419.0" onAction="#btnDeleteOnAction" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: #f1c40f;" text="Delete" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -73,59 +74,59 @@
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXButton>
-      <Line endX="605.0000610351562" layoutX="97.0" layoutY="316.0" startX="-95.00001525878906" />
-      <Label layoutX="40.0" layoutY="218.0" text="Order Id: ">
+      <Line endX="591.0" layoutX="97.0" layoutY="284.0" startX="-84.00000762939453" />
+      <Label layoutX="40.0" layoutY="186.0" text="Order Id: ">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </Label>
-      <Label fx:id="lblId" layoutX="119.0" layoutY="218.0" text="ID">
+      <Label fx:id="lblId" layoutX="119.0" layoutY="186.0" text="ID">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </Label>
-      <Label layoutX="371.0" layoutY="174.0" text="Date: ">
+      <Label layoutX="371.0" layoutY="142.0" text="Date: ">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </Label>
-      <Label layoutX="532.0" layoutY="174.0" text="Time: ">
+      <Label layoutX="541.0" layoutY="142.0" text="Time: ">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </Label>
-      <Label fx:id="lblDate" layoutX="417.0" layoutY="174.0" text="dd/mm/yyyy">
+      <Label fx:id="lblDate" layoutX="417.0" layoutY="142.0" text="dd/mm/yyyy">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </Label>
-      <Label fx:id="lblTime" layoutX="583.0" layoutY="174.0" text="hh:mm:ss">
+      <Label fx:id="lblTime" layoutX="592.0" layoutY="142.0" text="hh:mm:ss">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </Label>
-      <JFXComboBox fx:id="cmbItemCode" layoutX="184.0" layoutY="217.0" promptText="Item Code" />
-      <Label layoutX="40.0" layoutY="174.0" text="Emp Id: ">
+      <JFXComboBox fx:id="cmbItemCode" layoutX="196.0" layoutY="185.0" promptText="Item Code" />
+      <Label layoutX="40.0" layoutY="142.0" text="Emp Id: ">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </Label>
-      <Label fx:id="lblEmpId" layoutX="113.0" layoutY="174.0" text="dd/mm/yyyy">
+      <Label fx:id="lblEmpId" layoutX="113.0" layoutY="142.0" text="dd/mm/yyyy">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </Label>
-      <Label layoutX="19.0" layoutY="542.0" text="Net Total:">
+      <Label layoutX="34.0" layoutY="506.0" text="Net Total:">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </Label>
-      <Label fx:id="lblTotal" layoutX="108.0" layoutY="542.0" text="0.00">
+      <Label fx:id="lblTotal" layoutX="117.0" layoutY="506.0" text="0.00">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </Label>
-      <JFXButton layoutX="531.0" layoutY="407.0" onAction="#btnUpdateOnAction" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: #f1c40f;" text="Update" textAlignment="CENTER">
+      <JFXButton layoutX="540.0" layoutY="375.0" onAction="#btnUpdateOnAction" prefHeight="35.0" prefWidth="126.0" style="-fx-background-color: #f1c40f;" text="Update" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -133,27 +134,47 @@
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXButton>
-      <JFXTextField fx:id="txtQty" focusColor="BLACK" labelFloat="true" layoutX="309.0" layoutY="266.0" prefHeight="35.0" prefWidth="107.0" promptText="Qty" unFocusColor="#bfa019">
+      <JFXTextField fx:id="txtQty" focusColor="BLACK" labelFloat="true" layoutX="426.0" layoutY="234.0" prefHeight="36.0" prefWidth="74.0" promptText="Qty" unFocusColor="#bfa019">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXTextField>
-      <Label fx:id="lblName" layoutX="325.0" layoutY="218.0" text="Name">
+      <Label fx:id="lblName" layoutX="401.0" layoutY="186.0" prefHeight="23.0" prefWidth="98.0">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </Label>
-      <Label fx:id="lblCategory" layoutX="430.0" layoutY="218.0" text="Category">
+      <Label fx:id="lblCategory" layoutX="120.0" layoutY="240.0" prefHeight="23.0" prefWidth="68.0">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </Label>
-      <Label fx:id="lblPrice" layoutX="40.0" layoutY="273.0" text="Price">
+      <Label fx:id="lblPrice" layoutX="249.0" layoutY="240.0" text="0.0">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </Label>
-      <Label fx:id="lblStock" layoutX="162.0" layoutY="273.0" text="Stock">
+      <Label fx:id="lblStock" layoutX="364.0" layoutY="240.0" text="0">
+         <font>
+            <Font name="Baskerville Old Face" size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="39.0" layoutY="240.0" text="Category:">
+         <font>
+            <Font name="Baskerville Old Face" size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="313.0" layoutY="240.0" text="Stock:">
+         <font>
+            <Font name="Baskerville Old Face" size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="196.0" layoutY="240.0" text="Price:">
+         <font>
+            <Font name="Baskerville Old Face" size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="343.0" layoutY="186.0" text="Name:">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>

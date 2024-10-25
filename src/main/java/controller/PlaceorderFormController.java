@@ -24,7 +24,6 @@ import util.LoginInfo;
 import util.ServiceType;
 
 import java.net.URL;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -95,11 +94,47 @@ public class PlaceorderFormController implements Initializable {
         colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
         colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
         colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
+        int qty = 0;
+        try {
+            qty = Integer.parseInt(txtQty.getText());
+            if ((qty > Integer.parseInt(lblStock.getText()))) {
+                new Alert(Alert.AlertType.WARNING, "Invalid qty").show();
+            } else {
+                if (cartTMS.contains(cmbItemCode.getValue())) {
+                    new Alert(Alert.AlertType.WARNING, "Item already added with the code:" + cmbItemCode.getValue()).show();
+                } else {
+                    cartTMS.add(new CartTM(
+                            lblId.getText(),
+                            cmbItemCode.getValue(),
+                            lblName.getText(),
+                            lblCategory.getText(),
+                            qty,
+                            Double.parseDouble(lblPrice.getText()),
+                            Double.parseDouble(lblPrice.getText()) * qty)
+                    );
+                    getNetTotal();
+                    tblEmployees.setItems(cartTMS);
+                    setTextToEmpty();
+                }
+            }
+        } catch (NumberFormatException e) {
+            txtQty.setText("1");
 
-        if (Integer.parseInt(txtQty.getText()) > Integer.parseInt(lblStock.getText())) {
-            new Alert(Alert.AlertType.WARNING, "Invalid qty").show();
-        } else {
-            cartTMS.add(new CartTM(
+        }
+    }
+
+    @FXML
+    void btnDeleteOnAction(ActionEvent event) {
+        cartTMS.remove(index);
+        getNetTotal();
+        setTextToEmpty();
+    }
+
+    @FXML
+    void btnUpdateOnAction(ActionEvent event) {
+        if (cartTMS.contains(cmbItemCode.getValue())) {
+            cartTMS.set(index, new CartTM(
+                    lblId.getText(),
                     cmbItemCode.getValue(),
                     lblName.getText(),
                     lblCategory.getText(),
@@ -110,29 +145,9 @@ public class PlaceorderFormController implements Initializable {
             getNetTotal();
             tblEmployees.setItems(cartTMS);
             setTextToEmpty();
+        } else {
+            new Alert(Alert.AlertType.WARNING, "No item added with the code:" + cmbItemCode.getValue()).show();
         }
-    }
-
-    @FXML
-    void btnDeleteOnAction(ActionEvent event) {
-        getNetTotal();
-        cartTMS.remove(index);
-        setTextToEmpty();
-    }
-
-    @FXML
-    void btnUpdateOnAction(ActionEvent event) {
-        cartTMS.set(index, new CartTM(
-                cmbItemCode.getValue(),
-                lblName.getText(),
-                lblCategory.getText(),
-                Integer.parseInt(txtQty.getText()),
-                Double.parseDouble(lblPrice.getText()),
-                Double.parseDouble(lblPrice.getText()) * Integer.parseInt(txtQty.getText())
-        ));
-        getNetTotal();
-        tblEmployees.setItems(cartTMS);
-        setTextToEmpty();
     }
 
     @Override
@@ -143,20 +158,21 @@ public class PlaceorderFormController implements Initializable {
         lblId.setText(orderService.generateId());
         cmbItemCode.getSelectionModel().selectedItemProperty().addListener(((observableValue, o, newValue) -> {
             if (newValue != null) {
-                searchItems(newValue);
+                searchItem(newValue);
             }
         }));
         tblEmployees.getSelectionModel().selectedItemProperty().addListener(((observableValue, oldValue, newValue) ->
         {
             if (null != newValue) {
-                setTextToValues(newValue);
+                searchItem(newValue.getItemCode());
                 index = cartTMS.indexOf(new CartTM(
+                        lblId.getText(),
                         cmbItemCode.getValue(),
                         lblName.getText(),
                         lblCategory.getText(),
-                        Integer.parseInt(txtQty.getText()),
+                        newValue.getQty(),
                         Double.parseDouble(lblPrice.getText()),
-                        Double.parseDouble(lblPrice.getText()) * Integer.parseInt(txtQty.getText())
+                        (Double.parseDouble(lblPrice.getText()) * newValue.getQty())
                 ));
             }
         }));
@@ -167,7 +183,7 @@ public class PlaceorderFormController implements Initializable {
         cmbItemCode.setItems(itemIdList);
     }
 
-    private void searchItems(String itemCode) {
+    private void searchItem(String itemCode) {
         Product product = productService.searchProduct(itemCode);
         lblName.setText(product.getName());
         lblCategory.setText(product.getCategory());
@@ -178,23 +194,17 @@ public class PlaceorderFormController implements Initializable {
     private void getNetTotal() {
         Double total = 0.0;
         for (CartTM cartTM : cartTMS) {
-            total += cartTM.getTotal() != null ? cartTM.getTotal() : 0.0;
+            total += cartTM.getTotal();
         }
         lblTotal.setText(total.toString());
-    }
-
-    private void setTextToValues(CartTM newValue) {
-        cmbItemCode.setValue(newValue.getItemCode());
-        lblName.setText(newValue.getName());
-        lblCategory.setText(newValue.getCategory());
-        txtQty.setText(newValue.getQty().toString());
-        lblPrice.setText(newValue.getUnitPrice().toString());
     }
 
     private void setTextToEmpty() {
         lblName.setText("");
         lblPrice.setText("");
+        cmbItemCode.setItems(cmbItemCode.getItems());
         txtQty.setText("");
+        lblStock.setText("");
         lblCategory.setText("");
     }
 
@@ -223,9 +233,10 @@ public class PlaceorderFormController implements Initializable {
             String orderTime = lblTime.getText();
             String employeeId = lblEmpId.getText();
 
-            List<OrderDetail> orderDetails = new ArrayList<>();
+            Set<OrderDetail> orderDetails = new HashSet<>();
             cartTMS.forEach(obj -> {
                 orderDetails.add(new OrderDetail(
+                        obj.getOrderId(),
                         obj.getItemCode(),
                         obj.getName(),
                         obj.getQty(),
@@ -237,12 +248,19 @@ public class PlaceorderFormController implements Initializable {
             if (orderService.addOrder(order)) {
                 new Alert(Alert.AlertType.INFORMATION, "Order Placed Successfully!").show();
                 lblId.setText(orderService.generateId());
+                cartTMS.removeAll();
+                setTextToEmpty();
+                tblEmployees.refresh();
+                getNetTotal();
             } else {
                 new Alert(Alert.AlertType.ERROR, "Failed to place order!").show();
             }
-            System.out.println(order);
         } else {
-
+            lblId.setText(orderService.generateId());
+            cartTMS.removeAll();
+            setTextToEmpty();
+            tblEmployees.refresh();
+            getNetTotal();
         }
     }
 }

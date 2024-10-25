@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.util.List;
+import java.util.Set;
 
 @Data
 @ToString
@@ -16,12 +17,11 @@ import java.util.List;
 @Table(name = "Product")
 public class ProductEntity {
     @Id
-    private String id;
+    private String itemCode;
     private String name;
     private String category;
     private String size;
     private Double price;
     private Integer qty;
     private String supplier;
-
 }

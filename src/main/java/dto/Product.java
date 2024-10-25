@@ -10,7 +10,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product {
-    private String id;
+    private String itemCode;
     private String name;
     private String category;
     private String size;

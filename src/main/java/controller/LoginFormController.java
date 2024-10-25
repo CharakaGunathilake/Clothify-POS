@@ -1,6 +1,7 @@
 package controller;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import dto.Login;
 import javafx.scene.control.ButtonType;
@@ -34,7 +35,7 @@ public class LoginFormController implements Initializable {
     private JFXTextField txtEmail;
 
     @FXML
-    private JFXTextField txtPassword;
+    private JFXPasswordField txtPassword;
 
     private final LoginService service = ServiceFactory.getInstance().getServiceType(ServiceType.LOGIN);
     Stage stage;
@@ -49,6 +50,7 @@ public class LoginFormController implements Initializable {
                     LoginInfo info = LoginInfo.getInstance();
                     info.setEmail(login.getEmail());
                     info.setUserId(login.getUserId());
+                    info.setPassword(login.getPassword());
                     info.setEmail(txtEmail.getText());
                     stage = (Stage) scenePane.getScene().getWindow();
                     if ((login.getUserId()).contains("A")) {

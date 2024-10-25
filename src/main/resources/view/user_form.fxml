@@ -13,9 +13,9 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="581.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserFormController">
+<AnchorPane prefHeight="575.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserFormController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="580.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" width="880.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="575.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" width="880.0">
          <fill>
             <LinearGradient endX="0.8672985781990521" endY="1.0">
                <stops>
@@ -38,18 +38,18 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <BorderPane fx:id="borderPane" layoutX="-1.0" layoutY="1.0" prefHeight="580.0" prefWidth="880.0">
+      <BorderPane fx:id="borderPane" layoutX="-1.0" layoutY="1.0" prefHeight="575.0" prefWidth="880.0">
          <left>
-            <VBox alignment="TOP_CENTER" prefHeight="580.0" prefWidth="215.0" style="-fx-background-color: f1c40f;" BorderPane.alignment="CENTER">
+            <VBox alignment="TOP_CENTER" prefHeight="575.0" prefWidth="186.0" style="-fx-background-color: f1c40f;" BorderPane.alignment="CENTER">
                <children>
                   <Pane prefHeight="87.0" prefWidth="214.0">
                      <children>
-                        <Label layoutX="19.0" layoutY="14.0" prefHeight="42.0" prefWidth="176.0" text="CLOTHIFY" textFill="#b18f12">
+                        <Label layoutX="5.0" layoutY="14.0" prefHeight="42.0" prefWidth="176.0" text="CLOTHIFY" textFill="#b18f12">
                            <font>
                               <Font name="Baskerville Old Face" size="34.0" />
                            </font>
                         </Label>
-                        <Label layoutX="59.0" layoutY="44.0" prefHeight="42.0" prefWidth="97.0" text="Employee" textFill="#b18f12">
+                        <Label layoutX="45.0" layoutY="44.0" prefHeight="42.0" prefWidth="97.0" text="Employee" textFill="#b18f12">
                            <font>
                               <Font name="Baskerville Old Face" size="23.0" />
                            </font>

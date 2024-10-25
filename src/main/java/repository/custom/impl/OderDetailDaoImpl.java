@@ -1,6 +1,6 @@
 package repository.custom.impl;
 
-import entity.CartTMEntity;
+import entity.OrderDetailEntity;
 import javafx.scene.control.Alert;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -11,7 +11,7 @@ import java.util.List;
 
 public class OderDetailDaoImpl implements OrderDetailDao {
     @Override
-    public boolean save(CartTMEntity orderDetailEntity) {
+    public boolean save(OrderDetailEntity orderDetailEntity) {
         Session session = HibernateUtil.getSession();
         Transaction transaction = session.beginTransaction();
         try {
@@ -21,9 +21,8 @@ public class OderDetailDaoImpl implements OrderDetailDao {
         } catch (Exception sqlException) {
             if (null != transaction) {
                 new Alert(Alert.AlertType.ERROR, "Failed to add Record->" + sqlException.getMessage()).show();
-                transaction.rollback();
                 sqlException.printStackTrace();
-                System.out.println(sqlException.getMessage());
+                transaction.rollback();
             }
         }finally{
             session.close();
@@ -36,17 +35,17 @@ public class OderDetailDaoImpl implements OrderDetailDao {
     }
 
     @Override
-    public List<CartTMEntity> getAll() {
+    public List<OrderDetailEntity> getAll() {
         return List.of();
     }
 
     @Override
-    public boolean update(CartTMEntity orderDetailEntity) {
+    public boolean update(OrderDetailEntity orderDetailEntity) {
         return false;
     }
 
     @Override
-    public CartTMEntity search(String id) {
+    public OrderDetailEntity search(String id) {
         return null;
     }
 }

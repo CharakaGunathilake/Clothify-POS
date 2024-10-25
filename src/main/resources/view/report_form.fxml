@@ -32,6 +32,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <ComboBox fx:id="cmbReports" layoutX="41.0" layoutY="161.0" prefHeight="25.0" prefWidth="103.0" promptText="Reports" style="-fx-background-color: #f1c40f;" />
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#e6e7e841" height="400.0" layoutX="26.0" layoutY="117.0" stroke="BLACK" strokeType="INSIDE" width="647.0" />
+      <ComboBox fx:id="cmbReports" layoutX="41.0" layoutY="141.0" prefHeight="25.0" prefWidth="103.0" promptText="Reports" style="-fx-background-color: #f1c40f;" />
    </children>
 </AnchorPane>

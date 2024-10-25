@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Hyperlink?>
@@ -42,11 +43,6 @@
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtPassword" focusColor="BLACK" labelFloat="true" layoutX="129.0" layoutY="158.0" prefHeight="25.0" prefWidth="210.0" promptText="Password" unFocusColor="#bfa019">
-         <font>
-            <Font name="Baskerville Old Face" size="19.0" />
-         </font>
-      </JFXTextField>
       <JFXButton layoutX="191.0" layoutY="245.0" onAction="#btnLogInOnAction" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #f1c40f;" text="Log In" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -62,5 +58,10 @@
       </Label>
       <Hyperlink layoutX="129.0" layoutY="206.0" onAction="#lnkForgotPasswordOnAction" text="Forgot Password?" />
       <Hyperlink layoutX="186.0" layoutY="289.0" onAction="#lnkCreateAccountOnAction" text="Create Account" />
+      <JFXPasswordField fx:id="txtPassword" focusColor="BLACK" layoutX="129.0" layoutY="152.0" prefHeight="26.0" prefWidth="210.0" promptText="Password" unFocusColor="#bfa019">
+         <font>
+            <Font name="Baskerville Old Face" size="19.0" />
+         </font>
+      </JFXPasswordField>
    </children>
 </AnchorPane>

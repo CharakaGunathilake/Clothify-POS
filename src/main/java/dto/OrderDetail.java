@@ -11,6 +11,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderDetail {
+    private String orderId;
     private String itemCode;
     private String name;
     private Integer qty;

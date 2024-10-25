@@ -40,22 +40,23 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <JFXTextField fx:id="txtName" focusColor="BLACK" labelFloat="true" layoutX="319.0" layoutY="211.0" prefHeight="35.0" prefWidth="158.0" promptText="Name" unFocusColor="#bfa019">
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#e6e7e841" height="400.0" layoutX="14.0" layoutY="118.0" stroke="BLACK" strokeType="INSIDE" width="663.0" />
+      <JFXTextField fx:id="txtName" focusColor="BLACK" labelFloat="true" layoutX="319.0" layoutY="164.0" prefHeight="35.0" prefWidth="158.0" promptText="Name" unFocusColor="#bfa019">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtPrice" focusColor="BLACK" labelFloat="true" layoutX="513.0" layoutY="211.0" prefHeight="35.0" prefWidth="139.0" promptText="Price" unFocusColor="#bfa019">
+      <JFXTextField fx:id="txtPrice" focusColor="BLACK" labelFloat="true" layoutX="513.0" layoutY="164.0" prefHeight="35.0" prefWidth="139.0" promptText="Price" unFocusColor="#bfa019">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtQty" focusColor="BLACK" labelFloat="true" layoutX="319.0" layoutY="271.0" prefHeight="35.0" prefWidth="119.0" promptText="Qty" unFocusColor="#bfa019">
+      <JFXTextField fx:id="txtQty" focusColor="BLACK" labelFloat="true" layoutX="319.0" layoutY="224.0" prefHeight="35.0" prefWidth="119.0" promptText="Qty" unFocusColor="#bfa019">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXTextField>
-      <TableView fx:id="tblProduct" layoutX="26.0" layoutY="338.0" prefHeight="200.0" prefWidth="513.0" style="-fx-background-color: #f1c40f;">
+      <TableView fx:id="tblProduct" layoutX="26.0" layoutY="291.0" prefHeight="200.0" prefWidth="513.0" style="-fx-background-color: #f1c40f;">
          <columns>
             <TableColumn fx:id="colId" prefWidth="53.0" text="ID" />
             <TableColumn fx:id="colName" prefWidth="98.0" text="NAME" />
@@ -66,7 +67,7 @@
             <TableColumn fx:id="colSupplier" prefWidth="93.0" text="SUPPLIER" />
          </columns>
       </TableView>
-      <JFXButton layoutX="558.0" layoutY="274.0" onAction="#btnAddOnAction" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #f1c40f;" text="Add" textAlignment="CENTER">
+      <JFXButton layoutX="558.0" layoutY="227.0" onAction="#btnAddOnAction" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #f1c40f;" text="Add" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -74,7 +75,7 @@
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="558.0" layoutY="443.0" onAction="#btnUpdateOnAction" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #f1c40f;" text="Update" textAlignment="CENTER">
+      <JFXButton layoutX="558.0" layoutY="396.0" onAction="#btnUpdateOnAction" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #f1c40f;" text="Update" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -82,7 +83,7 @@
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="558.0" layoutY="503.0" onAction="#btnDeleteOnAction" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #f1c40f;" text="Delete" textAlignment="CENTER">
+      <JFXButton layoutX="558.0" layoutY="456.0" onAction="#btnDeleteOnAction" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #f1c40f;" text="Delete" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -90,19 +91,19 @@
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXButton>
-      <Line endX="600.0" layoutX="96.0" layoutY="326.0" startX="-100.0" />
-      <Label fx:id="lblId" layoutX="140.0" layoutY="217.0" text="ID">
+      <Line endX="580.9999389648438" layoutX="96.0" layoutY="279.0" startX="-81.29999542236328" />
+      <Label fx:id="lblId" layoutX="140.0" layoutY="170.0" text="ID">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cmbCategory" layoutX="201.0" layoutY="216.0" prefHeight="25.0" prefWidth="103.0" promptText="Category" style="-fx-background-color: #f1c40f;" />
-      <Label layoutX="49.0" layoutY="217.0" text="Product Id: ">
+      <ComboBox fx:id="cmbCategory" layoutX="201.0" layoutY="169.0" prefHeight="25.0" prefWidth="103.0" promptText="Category" style="-fx-background-color: #f1c40f;" />
+      <Label layoutX="49.0" layoutY="170.0" text="Product Id: ">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </Label>
-      <ComboBox fx:id="cmbSize" layoutX="49.0" layoutY="279.0" prefHeight="25.0" prefWidth="103.0" promptText="Size" style="-fx-background-color: #f1c40f;" />
-      <ComboBox fx:id="cmbSupplier" layoutX="201.0" layoutY="279.0" prefHeight="25.0" prefWidth="103.0" promptText="Supplier" style="-fx-background-color: #f1c40f;" />
+      <ComboBox fx:id="cmbSize" layoutX="49.0" layoutY="232.0" prefHeight="25.0" prefWidth="103.0" promptText="Size" style="-fx-background-color: #f1c40f;" />
+      <ComboBox fx:id="cmbSupplier" layoutX="201.0" layoutY="232.0" prefHeight="25.0" prefWidth="103.0" promptText="Supplier" style="-fx-background-color: #f1c40f;" />
    </children>
 </AnchorPane>

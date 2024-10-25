@@ -72,7 +72,7 @@ public class ProductsFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lblId.setText(service.generateId());
-        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colId.setCellValueFactory(new PropertyValueFactory<>("itemCode"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
         colSize.setCellValueFactory(new PropertyValueFactory<>("size"));
@@ -167,7 +167,7 @@ public class ProductsFormController implements Initializable {
     }
 
     private void setTextToValues(Product newValue) {
-        lblId.setText(newValue.getId());
+        lblId.setText(newValue.getItemCode());
         txtName.setText(newValue.getName());
         cmbCategory.setValue(newValue.getCategory());
         cmbSize.setValue((newValue.getSize()));

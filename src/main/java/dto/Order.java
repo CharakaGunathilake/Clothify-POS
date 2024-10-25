@@ -8,6 +8,7 @@ import lombok.ToString;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -19,5 +20,5 @@ public class Order {
     private String orderTime;
     private String empId;
     private Double netTotal;
-    private List<OrderDetail> orderDetails;
+    private Set<OrderDetail> orderDetails;
 }

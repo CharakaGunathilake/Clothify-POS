@@ -1,16 +1,10 @@
 package repository.custom.impl;
 
-import entity.CartTMEntity;
-import entity.EmployeeEntity;
 import entity.OrderEntity;
-import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import repository.DaoFactory;
 import repository.custom.OrderDao;
-import repository.custom.OrderDetailDao;
-import util.DaoType;
 import util.HibernateUtil;
 
 import java.util.List;
@@ -27,8 +21,8 @@ public class OrderDaoImpl implements OrderDao {
         } catch (Exception sqlException) {
             if (null != transaction) {
                 new Alert(Alert.AlertType.ERROR, "Failed to add Record->" + sqlException.getMessage()).show();
-                transaction.rollback();
                 sqlException.printStackTrace();
+                transaction.rollback();
             }
         }finally{
             session.close();

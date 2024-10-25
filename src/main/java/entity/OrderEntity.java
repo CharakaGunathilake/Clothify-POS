@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -22,11 +22,4 @@ public class OrderEntity {
     private String orderTime;
     private String empId;
     private Double netTotal;
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(
-            name = "OrderDetail",
-            joinColumns = { @JoinColumn(name = "orderId") },
-            inverseJoinColumns = { @JoinColumn(name = "itemcode") }
-    )
-    private List<CartTMEntity> cartDetails;
 }

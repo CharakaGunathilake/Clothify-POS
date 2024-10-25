@@ -39,27 +39,28 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <JFXTextField fx:id="txtName" focusColor="BLACK" labelFloat="true" layoutX="220.0" layoutY="212.0" prefHeight="35.0" prefWidth="171.0" promptText="Name" unFocusColor="#bfa019">
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#e6e7e841" height="400.0" layoutX="22.0" layoutY="122.0" stroke="BLACK" strokeType="INSIDE" width="647.0" />
+      <JFXTextField fx:id="txtName" focusColor="BLACK" labelFloat="true" layoutX="219.0" layoutY="170.0" prefHeight="35.0" prefWidth="171.0" promptText="Name" unFocusColor="#bfa019">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtEmail" focusColor="BLACK" labelFloat="true" layoutX="443.0" layoutY="212.0" prefHeight="25.0" prefWidth="210.0" promptText="Email" unFocusColor="#bfa019">
+      <JFXTextField fx:id="txtEmail" focusColor="BLACK" labelFloat="true" layoutX="442.0" layoutY="170.0" prefHeight="25.0" prefWidth="210.0" promptText="Email" unFocusColor="#bfa019">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtCompany" focusColor="BLACK" labelFloat="true" layoutX="50.0" layoutY="275.0" prefHeight="25.0" prefWidth="210.0" promptText="Company" unFocusColor="#bfa019">
+      <JFXTextField fx:id="txtCompany" focusColor="BLACK" labelFloat="true" layoutX="49.0" layoutY="233.0" prefHeight="25.0" prefWidth="210.0" promptText="Company" unFocusColor="#bfa019">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtItem" focusColor="BLACK" labelFloat="true" layoutX="312.0" layoutY="275.0" prefHeight="25.0" prefWidth="210.0" promptText="Item" unFocusColor="#bfa019">
+      <JFXTextField fx:id="txtItem" focusColor="BLACK" labelFloat="true" layoutX="311.0" layoutY="233.0" prefHeight="25.0" prefWidth="210.0" promptText="Item" unFocusColor="#bfa019">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXTextField>
-      <TableView fx:id="tblSupplier" layoutX="27.0" layoutY="339.0" prefHeight="200.0" prefWidth="495.0" style="-fx-background-color: #f1c40f;">
+      <TableView fx:id="tblSupplier" layoutX="40.0" layoutY="298.0" prefHeight="200.0" prefWidth="495.0" style="-fx-background-color: #f1c40f;">
          <columns>
             <TableColumn fx:id="colId" prefWidth="53.0" text="ID" />
             <TableColumn fx:id="colName" prefWidth="98.0" text="NAME" />
@@ -68,7 +69,7 @@
             <TableColumn fx:id="colItem" prefWidth="108.0" text="ITEM" />
          </columns>
       </TableView>
-      <JFXButton layoutX="559.0" layoutY="275.0" onAction="#btnAddOnAction" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #f1c40f;" text="Add" textAlignment="CENTER">
+      <JFXButton layoutX="558.0" layoutY="233.0" onAction="#btnAddOnAction" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #f1c40f;" text="Add" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -76,7 +77,7 @@
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="559.0" layoutY="444.0" onAction="#btnUpdateOnAction" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #f1c40f;" text="Update" textAlignment="CENTER">
+      <JFXButton layoutX="558.0" layoutY="402.0" onAction="#btnUpdateOnAction" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #f1c40f;" text="Update" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -84,7 +85,7 @@
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="559.0" layoutY="504.0" onAction="#btnDeleteOnAction" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #f1c40f;" text="Delete" textAlignment="CENTER">
+      <JFXButton layoutX="558.0" layoutY="462.0" onAction="#btnDeleteOnAction" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #f1c40f;" text="Delete" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -92,13 +93,13 @@
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXButton>
-      <Line endX="599.9999389648438" layoutX="97.0" layoutY="327.0" startX="-100.0" />
-      <Label fx:id="lblId" layoutX="144.0" layoutY="218.0" text="ID">
+      <Line endX="573.0999755859375" layoutX="96.0" layoutY="285.0" startX="-72.50001525878906" />
+      <Label fx:id="lblId" layoutX="143.0" layoutY="176.0" text="ID">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </Label>
-      <Label layoutX="50.0" layoutY="218.0" text="Supplier Id: ">
+      <Label layoutX="49.0" layoutY="176.0" text="Supplier Id: ">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>

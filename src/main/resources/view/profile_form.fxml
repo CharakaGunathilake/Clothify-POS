@@ -1,14 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.ProfileFormController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane fx:id="scenePane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProfileFormController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="581.0" layoutX="2.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" width="700.0">
+         <fill>
+            <LinearGradient endX="0.8672985781990521" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.9450980424880981" green="0.7686274647712708" blue="0.05882352963089943" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006711409395973154">
+                     <color>
+                        <Color red="0.9450980424880981" green="0.7686274647712708" blue="0.05882352963089943" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.2631579041481018" green="0.2295321673154831" blue="0.09502924233675003" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#e6e7e841" height="282.0" layoutX="39.0" layoutY="212.0" stroke="BLACK" strokeType="INSIDE" width="624.0" />
+      <Label fx:id="lblId" layoutX="284.0" layoutY="252.0" text="Employee Id">
+         <font>
+            <Font name="Baskerville Old Face" size="23.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblName" layoutX="284.0" layoutY="303.0" text="Employee Name">
+         <font>
+            <Font name="Baskerville Old Face" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="132.0" layoutY="306.0" text="Name: ">
+         <font>
+            <Font name="Baskerville Old Face" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="132.0" layoutY="255.0" text="Id: ">
+         <font>
+            <Font name="Baskerville Old Face" size="23.0" />
+         </font>
+      </Label>
+      <Label fx:id="lblPassword" layoutX="284.0" layoutY="362.0" text="Employee Password">
+         <font>
+            <Font name="Baskerville Old Face" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="132.0" layoutY="362.0" text="Password: ">
+         <font>
+            <Font name="Baskerville Old Face" size="23.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="526.0" layoutY="427.0" onAction="#btnEditOnAction" prefHeight="35.0" prefWidth="91.0" style="-fx-background-color: #f1c40f;" text="Edit" textAlignment="CENTER">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Baskerville Old Face" size="19.0" />
+         </font>
+      </JFXButton>
+   </children>
 </AnchorPane>

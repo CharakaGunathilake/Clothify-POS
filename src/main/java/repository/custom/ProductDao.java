@@ -1,11 +1,11 @@
 package repository.custom;
 
-import dto.OrderDetail;
+import entity.OrderDetailEntity;
 import entity.ProductEntity;
 import repository.CrudRepository;
 
-import java.util.List;
+import java.util.Set;
 
 public interface ProductDao extends CrudRepository<ProductEntity> {
-    boolean updateStocks(List<OrderDetail> orderDetails);
+    boolean updateStocks(Set<OrderDetailEntity> orderDetails);
 }

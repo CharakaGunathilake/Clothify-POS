@@ -6,21 +6,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.List;
+import java.util.Set;
 
 @Data
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class CartTMEntity {
+@Table(name = "OrderDetail")
+public class OrderDetailEntity {
+    @Id
+    private String orderId;
     @Id
     private String itemCode;
     private String name;
     private Integer qty;
     private Double unitPrice;
     private Double total;
-    @ManyToMany(cascade = CascadeType.ALL
-            ,mappedBy = "cartDetails")
-    private List<OrderEntity> order;
 }

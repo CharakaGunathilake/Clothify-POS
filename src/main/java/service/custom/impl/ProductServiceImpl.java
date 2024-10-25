@@ -54,7 +54,7 @@ public class ProductServiceImpl implements ProductService {
     public ObservableList<String> getProductIds() {
         ObservableList<String> productsList = FXCollections.observableArrayList();
         productDao.getAll().forEach(productEntity -> {
-            productsList.add(productEntity.getId());
+            productsList.add(productEntity.getItemCode());
         });
         return productsList;
     }

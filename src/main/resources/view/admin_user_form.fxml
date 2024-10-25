@@ -15,7 +15,7 @@
 
 <AnchorPane prefHeight="328.0" prefWidth="879.0" style="-fx-background-color: #bdc3c7;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AdminUserFormController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="583.0" stroke="BLACK" strokeType="INSIDE" width="879.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="575.0" stroke="BLACK" strokeType="INSIDE" width="879.0">
          <fill>
             <LinearGradient endX="0.8672985781990521" endY="1.0">
                <stops>
@@ -33,18 +33,18 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <BorderPane fx:id="borderPane" layoutY="1.0" prefHeight="580.0" prefWidth="880.0" AnchorPane.bottomAnchor="2.2000000000000455">
+      <BorderPane fx:id="borderPane" layoutY="1.0" prefHeight="575.0" prefWidth="880.0">
          <left>
-            <VBox alignment="TOP_CENTER" prefHeight="530.0" prefWidth="215.0" style="-fx-background-color: f1c40f;" BorderPane.alignment="CENTER">
+            <VBox alignment="TOP_CENTER" prefHeight="575.0" prefWidth="182.0" style="-fx-background-color: f1c40f;" BorderPane.alignment="CENTER">
                <children>
                   <Pane prefHeight="87.0" prefWidth="214.0">
                      <children>
-                        <Label layoutX="19.0" layoutY="14.0" prefHeight="42.0" prefWidth="176.0" text="CLOTHIFY" textFill="#b18f12">
+                        <Label layoutX="3.0" layoutY="14.0" prefHeight="42.0" prefWidth="176.0" text="CLOTHIFY" textFill="#b18f12">
                            <font>
                               <Font name="Baskerville Old Face" size="34.0" />
                            </font>
                         </Label>
-                        <Label layoutX="74.0" layoutY="49.0" prefHeight="42.0" prefWidth="67.0" text="Admin" textFill="#b18f12">
+                        <Label layoutX="58.0" layoutY="52.0" prefHeight="42.0" prefWidth="67.0" text="Admin" textFill="#b18f12">
                            <font>
                               <Font name="Baskerville Old Face" size="23.0" />
                            </font>

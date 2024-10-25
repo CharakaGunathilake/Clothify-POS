@@ -1,6 +1,7 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,10 +28,10 @@ public class RenewPasswordFormController {
     private JFXButton btnSubmit;
 
     @FXML
-    private JFXTextField txtConfirmPassword;
+    private JFXPasswordField txtConfirmPassword;
 
     @FXML
-    private JFXTextField txtNewPassword;
+    private JFXPasswordField txtNewPassword;
     private Stage stage;
 
     @FXML
