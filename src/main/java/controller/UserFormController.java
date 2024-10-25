@@ -91,9 +91,8 @@ public class UserFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
-            Stage stage = (Stage) borderPane.getScene().getWindow();
-            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/profile_form.fxml"))));
-            stage.show();
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("../view/profile_form.fxml"));
+            borderPane.setCenter(pane);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

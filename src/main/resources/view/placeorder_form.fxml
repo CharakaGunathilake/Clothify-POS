@@ -41,7 +41,7 @@
          </fill>
       </Rectangle>
       <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#e6e7e841" height="418.0" layoutX="13.0" layoutY="122.0" stroke="BLACK" strokeType="INSIDE" width="676.0" />
-      <TableView fx:id="tblEmployees" layoutX="34.0" layoutY="297.0" prefHeight="201.0" prefWidth="495.0" style="-fx-background-color: #f1c40f;">
+      <TableView fx:id="tblCart" layoutX="34.0" layoutY="297.0" prefHeight="201.0" prefWidth="495.0" style="-fx-background-color: #f1c40f;">
          <columns>
             <TableColumn fx:id="colId" prefWidth="53.0" text="ID" />
             <TableColumn fx:id="colName" prefWidth="154.0" text="NAME" />

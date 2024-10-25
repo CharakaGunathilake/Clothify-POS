@@ -79,7 +79,6 @@ public class DashboardFormController {
         Matcher matchedEmail = patternEmail.matcher(txtEmail.getText());
         if (!matchedEmail.matches()) {
             new Alert(Alert.AlertType.ERROR, "Invalid Email format").show();
-            return false;
         } else if (!matchedPassword.matches()) {
             new Alert(Alert.AlertType.ERROR, "Password to weak").show();
         } else {

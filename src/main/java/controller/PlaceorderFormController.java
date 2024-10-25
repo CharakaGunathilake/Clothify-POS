@@ -2,10 +2,7 @@ package controller;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import dto.CartTM;
-import dto.Order;
-import dto.OrderDetail;
-import dto.Product;
+import dto.*;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -18,6 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Duration;
 import service.ServiceFactory;
+import service.custom.EmployeeService;
 import service.custom.OrderService;
 import service.custom.ProductService;
 import util.LoginInfo;
@@ -68,7 +66,7 @@ public class PlaceorderFormController implements Initializable {
     private Label lblTotal;
 
     @FXML
-    private TableView<CartTM> tblEmployees;
+    private TableView<CartTM> tblCart;
 
     @FXML
     private Label lblCategory;
@@ -84,8 +82,10 @@ public class PlaceorderFormController implements Initializable {
 
     private int index;
     ObservableList<CartTM> cartTMS = FXCollections.observableArrayList();
-    ProductService productService = ServiceFactory.getInstance().getServiceType(ServiceType.PRODUCT);
-    OrderService orderService = ServiceFactory.getInstance().getServiceType(ServiceType.ORDER);
+    final ProductService productService = ServiceFactory.getInstance().getServiceType(ServiceType.PRODUCT);
+    final OrderService orderService = ServiceFactory.getInstance().getServiceType(ServiceType.ORDER);
+    final EmployeeService employeeService = ServiceFactory.getInstance().getServiceType(ServiceType.EMPLOYEE);
+
 
     @FXML
     void btnAddOnAction(ActionEvent event) {
@@ -113,7 +113,7 @@ public class PlaceorderFormController implements Initializable {
                             Double.parseDouble(lblPrice.getText()) * qty)
                     );
                     getNetTotal();
-                    tblEmployees.setItems(cartTMS);
+                    tblCart.setItems(cartTMS);
                     setTextToEmpty();
                 }
             }
@@ -143,7 +143,7 @@ public class PlaceorderFormController implements Initializable {
                     Double.parseDouble(lblPrice.getText()) * Integer.parseInt(txtQty.getText())
             ));
             getNetTotal();
-            tblEmployees.setItems(cartTMS);
+            tblCart.setItems(cartTMS);
             setTextToEmpty();
         } else {
             new Alert(Alert.AlertType.WARNING, "No item added with the code:" + cmbItemCode.getValue()).show();
@@ -161,7 +161,7 @@ public class PlaceorderFormController implements Initializable {
                 searchItem(newValue);
             }
         }));
-        tblEmployees.getSelectionModel().selectedItemProperty().addListener(((observableValue, oldValue, newValue) ->
+        tblCart.getSelectionModel().selectedItemProperty().addListener(((observableValue, oldValue, newValue) ->
         {
             if (null != newValue) {
                 searchItem(newValue.getItemCode());
@@ -228,10 +228,12 @@ public class PlaceorderFormController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Place Order");
         Optional<ButtonType> buttonType = alert.showAndWait();
         if (buttonType.get().equals(ButtonType.OK)) {
-            String orderId = lblId.getText();
-            LocalDate orderDate = LocalDate.now();
-            String orderTime = lblTime.getText();
-            String employeeId = lblEmpId.getText();
+            final String orderId = lblId.getText();
+            final LocalDate orderDate = LocalDate.now();
+            final String orderTime = lblTime.getText();
+            final String employeeId = lblEmpId.getText();
+            final ObservableList<Employee> all = employeeService.getAll();
+            final String empName = all.get(all.indexOf(employeeId)).getName();
 
             Set<OrderDetail> orderDetails = new HashSet<>();
             cartTMS.forEach(obj -> {
@@ -244,13 +246,13 @@ public class PlaceorderFormController implements Initializable {
                         obj.getTotal()
                 ));
             });
-            Order order = new Order(orderId, orderDate, orderTime, employeeId, Double.parseDouble(lblTotal.getText()), orderDetails);
+            Order order = new Order(orderId, orderDate, orderTime, employeeId, empName, Double.parseDouble(lblTotal.getText()), orderDetails);
             if (orderService.addOrder(order)) {
                 new Alert(Alert.AlertType.INFORMATION, "Order Placed Successfully!").show();
                 lblId.setText(orderService.generateId());
                 cartTMS.removeAll();
                 setTextToEmpty();
-                tblEmployees.refresh();
+                tblCart.refresh();
                 getNetTotal();
             } else {
                 new Alert(Alert.AlertType.ERROR, "Failed to place order!").show();
@@ -259,7 +261,7 @@ public class PlaceorderFormController implements Initializable {
             lblId.setText(orderService.generateId());
             cartTMS.removeAll();
             setTextToEmpty();
-            tblEmployees.refresh();
+            tblCart.refresh();
             getNetTotal();
         }
     }

@@ -21,5 +21,6 @@ public class OrderEntity {
     private LocalDate orderDate;
     private String orderTime;
     private String empId;
+    private String empName;
     private Double netTotal;
 }
