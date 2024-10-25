@@ -10,7 +10,6 @@ public class LoginInfo {
     private String password;
 
     private LoginInfo(){}
-
     public static LoginInfo getInstance() {
         return instance == null ? instance = new LoginInfo() : instance;
     }

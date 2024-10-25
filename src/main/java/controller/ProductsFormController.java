@@ -5,6 +5,7 @@ import dto.Employee;
 import dto.Product;
 import service.ServiceFactory;
 import service.custom.ProductService;
+import service.custom.SupplierService;
 import util.ServiceType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,6 +22,11 @@ import java.util.regex.Pattern;
 
 public class ProductsFormController implements Initializable {
 
+    @FXML
+    private ComboBox<String> cmbSize;
+
+    @FXML
+    private ComboBox<String> cmbSupplier;
     @FXML
     private ComboBox<String> cmbCategory;
 
@@ -60,13 +66,8 @@ public class ProductsFormController implements Initializable {
     @FXML
     private JFXTextField txtQty;
 
-    @FXML
-    private JFXTextField txtSize;
-
-    @FXML
-    private JFXTextField txtSupplier;
-
     ProductService service = ServiceFactory.getInstance().getServiceType(ServiceType.PRODUCT);
+    SupplierService supplierService = ServiceFactory.getInstance().getServiceType(ServiceType.SUPPLIER);
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -78,11 +79,23 @@ public class ProductsFormController implements Initializable {
         colPrice.setCellValueFactory(new PropertyValueFactory<>("price"));
         colQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
         colSupplier.setCellValueFactory(new PropertyValueFactory<>("supplier"));
+
         ObservableList<String> categoryList = FXCollections.observableArrayList();
         categoryList.add("Men");
         categoryList.add("Women");
         categoryList.add("Kids");
         cmbCategory.setItems(categoryList);
+
+        ObservableList<String> sizeList = FXCollections.observableArrayList();
+        sizeList.add("Small");
+        sizeList.add("Medium");
+        sizeList.add("Large");
+        sizeList.add("XL");
+        sizeList.add("XXL");
+        cmbSize.setItems(sizeList);
+
+        loadSupplierList();
+
         tblProduct.getSelectionModel().selectedItemProperty().addListener(((observableValue, oldValue, newValue) ->
         {
             if (null != newValue) {
@@ -92,16 +105,27 @@ public class ProductsFormController implements Initializable {
         loadTable();
     }
 
+    private void loadSupplierList() {
+        ObservableList<String> supplierList = supplierService.getSupplierNames();
+        try {
+            cmbSupplier.setItems(supplierList);
+        } catch (NullPointerException e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Please add the suppliers before continuing");
+            alert.setHeaderText("No Suppliers Available!");
+            alert.show();
+        }
+    }
+
     @FXML
     void btnAddOnAction() {
         Product product = new Product(
                 lblId.getText(),
                 txtName.getText(),
                 cmbCategory.getValue(),
-                Integer.parseInt(txtSize.getText()),
+                cmbSize.getValue(),
                 Double.parseDouble(txtPrice.getText()),
                 Integer.parseInt(txtQty.getText()),
-                txtSupplier.getText()
+                cmbCategory.getValue()
         );
         if (service.addProduct(product)) {
             new Alert(Alert.AlertType.INFORMATION, "Product added Successfully!").show();
@@ -129,10 +153,10 @@ public class ProductsFormController implements Initializable {
                 lblId.getText(),
                 txtName.getText(),
                 cmbCategory.getValue(),
-                Integer.parseInt(txtSize.getText()),
+                cmbSize.getValue(),
                 Double.parseDouble(txtPrice.getText()),
                 Integer.parseInt(txtQty.getText()),
-                txtSupplier.getText()
+                cmbCategory.getValue()
         );
         if (service.updateProduct(product)) {
             new Alert(Alert.AlertType.INFORMATION, "Product Updated Successfully!").show();
@@ -146,18 +170,18 @@ public class ProductsFormController implements Initializable {
         lblId.setText(newValue.getId());
         txtName.setText(newValue.getName());
         cmbCategory.setValue(newValue.getCategory());
-        txtSize.setText((newValue.getSize()).toString());
+        cmbSize.setValue((newValue.getSize()));
         txtPrice.setText((newValue.getPrice()).toString());
         txtQty.setText((newValue.getQty()).toString());
-        txtSupplier.setText(newValue.getSupplier());
+        cmbCategory.setValue(newValue.getSupplier());
     }
 
     private void loadTable() {
-        try{
+        try {
             ObservableList<Product> productsList = service.getAll();
             tblProduct.setItems(productsList);
-        }catch (NullPointerException e){
-            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
+        } catch (NullPointerException e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
         }
     }
 

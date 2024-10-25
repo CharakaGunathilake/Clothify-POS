@@ -32,7 +32,6 @@ public class UserFormController {
 
     @FXML
     void btnProductsOnAction(ActionEvent event) {
-        Stage stage = new Stage();
         try {
             AnchorPane view = FXMLLoader.load(getClass().getResource("../view/products_form.fxml"));
             borderPane.setCenter(view);
@@ -44,7 +43,6 @@ public class UserFormController {
 
     @FXML
     void btnProfileOnAction(ActionEvent event) {
-        Stage stage = new Stage();
         try {
             AnchorPane view = FXMLLoader.load(getClass().getResource("../view/profile_form.fxml"));
             borderPane.setCenter(view);
@@ -56,7 +54,6 @@ public class UserFormController {
 
     @FXML
     void btnReportsOnAction(ActionEvent event) {
-        Stage stage = new Stage();
         try {
             AnchorPane view = FXMLLoader.load(getClass().getResource("../view/Report_form.fxml"));
             borderPane.setCenter(view);
@@ -68,7 +65,6 @@ public class UserFormController {
 
     @FXML
     void btnSuppliersOnAction(ActionEvent event) {
-        Stage stage = new Stage();
         try {
             AnchorPane view = FXMLLoader.load(getClass().getResource("../view/supplier_form.fxml"));
             borderPane.setCenter(view);
@@ -79,5 +75,13 @@ public class UserFormController {
     }
 
     public void btnLogOutOnAction(ActionEvent actionEvent) {
+        Stage stage = (Stage) borderPane.getScene().getWindow();
+        stage.close();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/login_form.fxml"))));
+            stage.show();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

@@ -7,6 +7,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import service.ServiceFactory;
 import service.custom.LoginService;
+import util.LoginInfo;
 import util.ServiceType;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -31,15 +32,17 @@ public class RecoveryFormController {
     @FXML
     private JFXTextField txtEmail;
 
+    private Stage stage;
     @FXML
     void btnSubmitOnAction(ActionEvent event) {
         LoginService service = ServiceFactory.getInstance().getServiceType(ServiceType.LOGIN);
         if (!(txtEmail.getText()).isEmpty()) {
             if (service.validEmail(txtEmail.getText())) {
+                LoginInfo.getInstance().setEmail(txtEmail.getText());
+                stage = (Stage) scenePane.getScene().getWindow();
                 try {
-                    AnchorPane view = FXMLLoader.load(getClass().getResource("../view/renew_password_form.fxml"));
-                    borderPane.setCenter(view);
-                    borderPane.toFront();
+                    stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/renew_password_form.fxml"))));
+                    stage.show();
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -47,20 +50,18 @@ public class RecoveryFormController {
                 new Alert(Alert.AlertType.WARNING, "Invalid or not found recovery E-mail").show();
             }
         } else {
-            new Alert(Alert.AlertType.WARNING, "PLease Enter Your Recovery E-mail Above").show();
+            new Alert(Alert.AlertType.WARNING, "PLease Enter Your Recovery E-mail").show();
         }
     }
 
     @FXML
     void btnCancelOnAction(ActionEvent actionEvent) {
+        stage = (Stage) scenePane.getScene().getWindow();
         try {
-            scenePane = FXMLLoader.load(getClass().getResource("../view/login_form.fxml"));
-            borderPane.setCenter(scenePane);
-            borderPane.toFront();
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/login_form.fxml"))));
+            stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-//         Stage stage = (Stage) scenePane.getScene().getWindow();
-//        stage.close();
     }
 }

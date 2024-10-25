@@ -3,6 +3,7 @@ package controller;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import dto.Login;
+import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import service.ServiceFactory;
@@ -21,6 +22,7 @@ import util.ServiceType;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class LoginFormController implements Initializable {
@@ -29,32 +31,27 @@ public class LoginFormController implements Initializable {
     private AnchorPane scenePane;
 
     @FXML
-    private BorderPane borderPane;
-
-    @FXML
-    private JFXComboBox<String> cmbPosition;
-
-    @FXML
     private JFXTextField txtEmail;
 
     @FXML
     private JFXTextField txtPassword;
 
     private final LoginService service = ServiceFactory.getInstance().getServiceType(ServiceType.LOGIN);
+    Stage stage;
 
     @FXML
     void btnLogInOnAction(ActionEvent event) {
         if (!hasEmptyFields()) {
-            Login login = service.searchLogin(txtEmail.getText());
-            boolean isValidLogin = verifyLogin(login);
-            if (isValidLogin){
-                LoginInfo info = LoginInfo.getInstance();
-                info.setEmail(login.getEmail());
-                info.setUserId(login.getUserId());
-                info.setEmail(txtEmail.getText());
-                if (cmbPosition.getValue() != null) {
-                    Stage stage = (Stage) scenePane.getScene().getWindow();
-                    if ((cmbPosition.getValue()).equals("Admin")) {
+            try {
+                Login login = service.searchLogin(txtEmail.getText());
+                boolean isValidLogin = verifyLogin(login);
+                if (isValidLogin) {
+                    LoginInfo info = LoginInfo.getInstance();
+                    info.setEmail(login.getEmail());
+                    info.setUserId(login.getUserId());
+                    info.setEmail(txtEmail.getText());
+                    stage = (Stage) scenePane.getScene().getWindow();
+                    if ((login.getUserId()).contains("A")) {
                         try {
                             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/admin_user_form.fxml"))));
                             stage.show();
@@ -63,27 +60,37 @@ public class LoginFormController implements Initializable {
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
-                    } else if ((cmbPosition.getValue()).equals("Employee")) {
+                    } else if ((login.getUserId()).contains("E")) {
                         try {
                             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/user_form.fxml"))));
                             stage.show();
                             stage.setResizable(false);
-                            service.setLoginId();
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
                     }
-                }else {
-                    new Alert(Alert.AlertType.ERROR,"Please select job role!").show();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR, "Incorrect Email or Password");
+                    alert.setHeaderText("Login Failed!");
+                    alert.show();
                 }
-
-            }else {
-               Alert alert = new Alert(Alert.AlertType.ERROR,"Incorrect Email or Password");
-               alert.setHeaderText("Login Failed!");
-               alert.show();
+            } catch (IllegalArgumentException e) {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "No Login Data Found");
+                alert.setHeaderText("Create an account before logging in");
+                Optional<ButtonType> buttonType = alert.showAndWait();
+                if (buttonType.get().equals(ButtonType.OK)) {
+                    try {
+                        stage = (Stage) scenePane.getScene().getWindow();
+                        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/dashboard_form.fxml"))));
+                        stage.show();
+                        stage.setResizable(false);
+                    } catch (IOException exception) {
+                        throw new RuntimeException(exception);
+                    }
+                }
             }
-        }else {
-            new Alert(Alert.AlertType.ERROR,"Please fill the empty input fields!!").show();
+        } else {
+            new Alert(Alert.AlertType.ERROR, "Please fill the empty input fields!!").show();
         }
     }
 
@@ -99,9 +106,9 @@ public class LoginFormController implements Initializable {
     @FXML
     void lnkForgotPasswordOnAction(ActionEvent event) {
         try {
-            scenePane = FXMLLoader.load(getClass().getResource("../view/recovery_form.fxml"));
-            borderPane.setCenter(scenePane);
-            borderPane.toFront();
+            stage = (Stage) scenePane.getScene().getWindow();
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/recovery_form.fxml"))));
+            stage.show();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -109,8 +116,8 @@ public class LoginFormController implements Initializable {
 
     @FXML
     void lnkCreateAccountOnAction(ActionEvent actionEvent) {
-        Stage stage = new Stage();
         try {
+            stage = (Stage) scenePane.getScene().getWindow();
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/dashboard_form.fxml"))));
             stage.show();
         } catch (IOException e) {
@@ -120,9 +127,5 @@ public class LoginFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        ObservableList<String> roles = FXCollections.observableArrayList();
-        roles.add("Admin");
-        roles.add("Employee");
-        cmbPosition.setItems(roles);
     }
 }

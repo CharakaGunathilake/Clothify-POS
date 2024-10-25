@@ -16,7 +16,7 @@
    <children>
       <BorderPane fx:id="borderPane" prefHeight="339.0" prefWidth="480.0">
          <right>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" height="340.0" stroke="BLACK" strokeType="INSIDE" width="482.0" BorderPane.alignment="CENTER">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="340.0" stroke="BLACK" strokeType="INSIDE" width="480.0" BorderPane.alignment="CENTER">
                <fill>
                   <LinearGradient endX="0.8672985781990521" endY="1.0">
                      <stops>

@@ -8,5 +8,4 @@ public interface LoginService extends SuperService {
     boolean validEmail(String email);
     Login searchLogin(String email);
     boolean createPassword(String password);
-    void setLoginId();
 }

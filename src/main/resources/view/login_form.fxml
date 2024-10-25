@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
@@ -16,7 +14,6 @@
 
 <AnchorPane fx:id="scenePane" prefHeight="332.0" prefWidth="467.0" style="-fx-background-color: #bdc3c7;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginFormController">
    <children>
-      <BorderPane fx:id="borderPane" layoutX="-3.0" layoutY="-1.0" prefHeight="240.0" prefWidth="480.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="340.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" width="480.0">
          <fill>
             <LinearGradient endX="0.8672985781990521" endY="1.0">
@@ -40,17 +37,17 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <JFXTextField fx:id="txtEmail" focusColor="BLACK" labelFloat="true" layoutX="129.0" layoutY="120.0" prefHeight="25.0" prefWidth="210.0" promptText="Email" unFocusColor="#bfa019">
+      <JFXTextField fx:id="txtEmail" focusColor="BLACK" labelFloat="true" layoutX="129.0" layoutY="97.0" prefHeight="25.0" prefWidth="210.0" promptText="Email" unFocusColor="#bfa019">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtPassword" focusColor="BLACK" labelFloat="true" layoutX="129.0" layoutY="181.0" prefHeight="25.0" prefWidth="210.0" promptText="Password" unFocusColor="#bfa019">
+      <JFXTextField fx:id="txtPassword" focusColor="BLACK" labelFloat="true" layoutX="129.0" layoutY="158.0" prefHeight="25.0" prefWidth="210.0" promptText="Password" unFocusColor="#bfa019">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXTextField>
-      <JFXButton layoutX="191.0" layoutY="260.0" onAction="#btnLogInOnAction" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #f1c40f;" text="Log In" textAlignment="CENTER">
+      <JFXButton layoutX="191.0" layoutY="245.0" onAction="#btnLogInOnAction" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #f1c40f;" text="Log In" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -58,13 +55,12 @@
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXButton>
-      <Label layoutX="189.0" layoutY="26.0" text="Log In" textFill="#f1c40f">
+      <Label layoutX="188.0" layoutY="40.0" text="Log In" textFill="#f1c40f">
          <font>
             <Font name="Baskerville Old Face" size="34.0" />
          </font>
       </Label>
-      <Hyperlink layoutX="129.0" layoutY="233.0" onAction="#lnkForgotPasswordOnAction" text="Forgot Password?" />
-      <Hyperlink layoutX="186.0" layoutY="301.0" onAction="#lnkCreateAccountOnAction" text="Create Account" />
-      <JFXComboBox fx:id="cmbPosition" layoutX="186.0" layoutY="78.0" prefHeight="25.0" prefWidth="102.0" promptText="User Role" />
+      <Hyperlink layoutX="129.0" layoutY="206.0" onAction="#lnkForgotPasswordOnAction" text="Forgot Password?" />
+      <Hyperlink layoutX="186.0" layoutY="289.0" onAction="#lnkCreateAccountOnAction" text="Create Account" />
    </children>
 </AnchorPane>

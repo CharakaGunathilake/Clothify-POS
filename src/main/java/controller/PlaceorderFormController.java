@@ -178,7 +178,7 @@ public class PlaceorderFormController implements Initializable {
     private void getNetTotal() {
         Double total = 0.0;
         for (CartTM cartTM : cartTMS) {
-            total += cartTM.getTotal();
+            total += cartTM.getTotal() != null ? cartTM.getTotal() : 0.0;
         }
         lblTotal.setText(total.toString());
     }

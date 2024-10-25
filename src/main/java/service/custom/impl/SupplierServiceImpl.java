@@ -35,8 +35,19 @@ public class SupplierServiceImpl implements SupplierService {
         supplierDao.getAll().forEach(supplierEntity -> {
             suppliersList.add(new ModelMapper().map(supplierEntity, Supplier.class));
         });
+        System.out.println(suppliersList);
         return suppliersList;
     }
+
+    @Override
+    public ObservableList<String> getSupplierNames() {
+        ObservableList<String> supplierNameList = FXCollections.observableArrayList();
+        supplierDao.getAll().forEach(supplierEntity -> {
+            supplierNameList.add(supplierEntity.getName());
+        });
+        return supplierNameList;
+    }
+
     public ObservableList<String> getSupplierIds(){
         ObservableList<String> supplierIdList = FXCollections.observableArrayList();
         supplierDao.getAll().forEach(supplierEntity -> {
@@ -56,13 +67,7 @@ public class SupplierServiceImpl implements SupplierService {
             while (m.find()) {
                 id = Integer.parseInt(m.group());
             }
-            if (id < 10) {
-                return "S00" + (id + 1);
-            } else if (id < 100) {
-                return "S0" + (id + 1);
-            } else {
-                return "S" + (id + 1);
-            }
+            return String.format("S%03d",(id+1));
         }else {
             return "S001";
         }

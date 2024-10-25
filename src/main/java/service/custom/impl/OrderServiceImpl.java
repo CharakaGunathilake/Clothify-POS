@@ -84,13 +84,7 @@ public class OrderServiceImpl implements OrderService {
             while (m.find()) {
                 id = Integer.parseInt(m.group());
             }
-            if (id < 10) {
-                return "O00" + (id + 1);
-            } else if (id < 100) {
-                return "O0" + (id + 1);
-            } else {
-                return "O" + (id + 1);
-            }
+            return String.format("O%03d",(id+1));
         }else {
             return "O001";
         }

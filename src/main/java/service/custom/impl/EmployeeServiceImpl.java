@@ -36,7 +36,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public ObservableList<Employee> getAll() throws NullPointerException{
+    public ObservableList<Employee> getAll() throws NullPointerException {
         ObservableList<Employee> employeesList = FXCollections.observableArrayList();
         employeeDao.getAll().forEach(employeeEntity -> {
             employeesList.add(new ModelMapper().map(employeeEntity, Employee.class));
@@ -48,7 +48,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     public ObservableList<String> getEmployeeIds() {
         ObservableList<String> employeesIdList = FXCollections.observableArrayList();
         employeeDao.getAll().forEach(employeeEntity -> {
-            employeesIdList.add(employeeEntity.getEmpId());
+            employeesIdList.add(employeeEntity.getId());
         });
         return employeesIdList;
     }
@@ -57,25 +57,15 @@ public class EmployeeServiceImpl implements EmployeeService {
     public String generateId() {
         List<String> employeeIdList = getEmployeeIds();
         if (!employeeIdList.isEmpty()) {
-            String last = employeeIdList.get((employeeIdList.size())-1);
+            String last = employeeIdList.get((employeeIdList.size()) - 1);
             Pattern p = Pattern.compile("\\d+");
             Matcher m = p.matcher(last);
             Integer id = null;
             while (m.find()) {
                 id = Integer.parseInt(m.group());
             }
-            try {
-                if (id < 10) {
-                    return "E00" + (id + 1);
-                } else if (id < 100) {
-                    return "E0" + (id + 1);
-                } else {
-                    return "E" + (id + 1);
-                }
-            }catch (NullPointerException e){
-                return "E001";
-            }
-        }else {
+            return String.format("E%03d",(id+1));
+        } else {
             return "E001";
         }
     }

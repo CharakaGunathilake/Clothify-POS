@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.paint.Color?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="515.0" prefWidth="753.0" style="-fx-background-color: #bdc3c7;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardFormController">
+<AnchorPane fx:id="scenePane" prefHeight="515.0" prefWidth="753.0" style="-fx-background-color: #bdc3c7;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardFormController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="345.0" layoutY="170.0" stroke="BLACK" strokeType="INSIDE" width="753.0">
          <fill>
@@ -64,14 +65,6 @@
             <Font name="Baskerville Old Face" size="49.0" />
          </font>
       </Label>
-      <JFXButton layoutX="520.0" layoutY="401.0" onAction="#btnLogInOnAction" prefHeight="35.0" prefWidth="80.0" style="-fx-background-color: #f1c40f;" text="Log In" textAlignment="CENTER">
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-         <font>
-            <Font name="Baskerville Old Face" size="19.0" />
-         </font>
-      </JFXButton>
       <Label layoutX="275.0" layoutY="466.0" text=" © 2024 allrights reserved" textFill="#141000">
          <font>
             <Font name="Baskerville Old Face" size="20.0" />
@@ -82,7 +75,7 @@
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXTextField>
-      <JFXButton layoutX="367.0" layoutY="401.0" onAction="#btnRegisterOnAction" prefHeight="35.0" prefWidth="112.0" style="-fx-background-color: #f1c40f;" text="Register" textAlignment="CENTER">
+      <JFXButton layoutX="351.0" layoutY="378.0" onAction="#btnRegisterOnAction" prefHeight="35.0" prefWidth="112.0" style="-fx-background-color: #f1c40f;" text="Register" textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -105,5 +98,19 @@
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXTextField>
+      <JFXButton fx:id="btnLogin" layoutX="351.0" layoutY="395.0" onAction="#btnLoginOnAction" prefHeight="35.0" prefWidth="112.0" style="-fx-background-color: #f1c40f;" text="Log In" textAlignment="CENTER" visible="false">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+         <font>
+            <Font name="Baskerville Old Face" size="19.0" />
+         </font>
+      </JFXButton>
+      <Hyperlink layoutX="407.0" layoutY="424.0" onAction="#lnkLoginOnAction" text="Log In" />
+      <Label layoutX="299.0" layoutY="426.0" text="Have an account ?" textFill="#ddc455">
+         <font>
+            <Font name="Baskerville Old Face" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

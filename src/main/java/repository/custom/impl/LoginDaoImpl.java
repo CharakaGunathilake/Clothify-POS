@@ -22,7 +22,6 @@ public class LoginDaoImpl implements LoginDao {
             if (null != transaction) {
                 new Alert(Alert.AlertType.ERROR, "Failed to add Record->" + sqlException.getMessage()).show();
                 transaction.rollback();
-                sqlException.printStackTrace();
             }
         }finally{
             session.close();
@@ -51,7 +50,6 @@ public class LoginDaoImpl implements LoginDao {
             if (null != session.getTransaction()) {
                 new Alert(Alert.AlertType.ERROR, "Failed to update Record->" + sqlException.getMessage()).show();
                 transaction.rollback();
-                sqlException.printStackTrace();
             }
         }finally {
             session.close();

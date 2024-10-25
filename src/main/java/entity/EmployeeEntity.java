@@ -16,7 +16,7 @@ import java.util.List;
 @Table(name = "Employee")
 public class EmployeeEntity {
     @Id
-    private String empId;
+    private String id;
     private String name;
     private String company;
     private String email;

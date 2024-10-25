@@ -50,12 +50,7 @@
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </JFXTextField>
-      <JFXTextField fx:id="txtSize" focusColor="BLACK" labelFloat="true" layoutX="49.0" layoutY="274.0" prefHeight="35.0" prefWidth="97.0" promptText="Size" unFocusColor="#bfa019">
-         <font>
-            <Font name="Baskerville Old Face" size="19.0" />
-         </font>
-      </JFXTextField>
-      <JFXTextField fx:id="txtQty" focusColor="BLACK" labelFloat="true" layoutX="185.0" layoutY="274.0" prefHeight="35.0" prefWidth="119.0" promptText="Qty" unFocusColor="#bfa019">
+      <JFXTextField fx:id="txtQty" focusColor="BLACK" labelFloat="true" layoutX="319.0" layoutY="271.0" prefHeight="35.0" prefWidth="119.0" promptText="Qty" unFocusColor="#bfa019">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
@@ -102,15 +97,12 @@
          </font>
       </Label>
       <ComboBox fx:id="cmbCategory" layoutX="201.0" layoutY="216.0" prefHeight="25.0" prefWidth="103.0" promptText="Category" style="-fx-background-color: #f1c40f;" />
-      <JFXTextField fx:id="txtSupplier" focusColor="BLACK" labelFloat="true" layoutX="355.0" layoutY="274.0" prefHeight="35.0" prefWidth="139.0" promptText="Supplier" unFocusColor="#bfa019">
-         <font>
-            <Font name="Baskerville Old Face" size="19.0" />
-         </font>
-      </JFXTextField>
       <Label layoutX="49.0" layoutY="217.0" text="Product Id: ">
          <font>
             <Font name="Baskerville Old Face" size="19.0" />
          </font>
       </Label>
+      <ComboBox fx:id="cmbSize" layoutX="49.0" layoutY="279.0" prefHeight="25.0" prefWidth="103.0" promptText="Size" style="-fx-background-color: #f1c40f;" />
+      <ComboBox fx:id="cmbSupplier" layoutX="201.0" layoutY="279.0" prefHeight="25.0" prefWidth="103.0" promptText="Supplier" style="-fx-background-color: #f1c40f;" />
    </children>
 </AnchorPane>

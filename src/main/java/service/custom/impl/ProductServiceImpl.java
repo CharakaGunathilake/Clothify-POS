@@ -70,13 +70,7 @@ public class ProductServiceImpl implements ProductService {
             while (m.find()) {
                 id = Integer.parseInt(m.group());
             }
-            if (id < 10) {
-                return "P00" + (id + 1);
-            } else if (id < 100) {
-                return "P0" + (id + 1);
-            } else {
-                return "P" + (id + 1);
-            }
+            return String.format("P%03d",(id+1));
         }else {
             return "P001";
         }

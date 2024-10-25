@@ -22,6 +22,5 @@ public class CartTMEntity {
     private Double total;
     @ManyToMany(cascade = CascadeType.ALL
             ,mappedBy = "cartDetails")
-    @JoinTable(name = "OrderEntity",joinColumns = @JoinColumn(name = "orderId"))
     private List<OrderEntity> order;
 }
